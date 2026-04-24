@@ -301,7 +301,9 @@
     <p>We send occasional updates — new podcast episodes, Solar Stories, blog posts, and news from the Nordic–Nigeria solar frontier. No noise, no spam.</p>
     <!-- Replace action URL with your Brevo/Mailchimp embed URL -->
     <form class="s-subscribe-form" action="https://fa2f16db.sibforms.com/serve/MUIFAPXMAh0XgE1_tec1q7Ir8IpbryADfhEOMlhquzEB4oV6W_4iaSuyLZ5E-IFpq0nefQ_1TPndyJSG-2SNiZ2cAxNhvUZ13tlY8OLXtrOu3RkgJWTK9CyKXDE1dO6yggL-nm9gQvLUgZ3bYSigmUO7_ttG3OMeJeCg-CEvRraERxfZeTDVgz2YLMhVvf8c91G9JVEq3Ls5Gxwbgw==" method="POST" target="_blank">
-      <input class="s-subscribe-input" type="email" name="email" placeholder="Your email address" required>
+      <input class="s-subscribe-input" type="email" id="EMAIL" name="EMAIL" placeholder="Your email address" required autocomplete="email">
+      <input type="hidden" name="locale" value="en">
+      <input type="text" name="email_address_check" value="" style="display:none">
       <button class="s-subscribe-btn" type="submit"><span>Subscribe</span></button>
     </form>
     <p class="s-subscribe-note">No spam. Unsubscribe anytime.</p>
