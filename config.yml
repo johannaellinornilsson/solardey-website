@@ -1,0 +1,110 @@
+backend:
+  name: github
+  repo: DITT_GITHUB_ANVÄNDARNAMN/solardey-website
+  branch: main
+  base_url: https://api.netlify.com  # Används för OAuth via Netlify Identity
+  auth_endpoint: auth
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+# ─────────────────────────────────────────
+# COLLECTIONS — allt du kan redigera i /admin
+# ─────────────────────────────────────────
+
+collections:
+
+  # ── BLOGG ──
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",      name: "title",       widget: "string" }
+      - { label: "Date",       name: "date",        widget: "datetime" }
+      - { label: "Tags",       name: "tags",        widget: "list", allow_add: true }
+      - { label: "Excerpt",    name: "excerpt",     widget: "string",   hint: "Short summary shown in blog list (1–2 sentences)" }
+      - { label: "Body",       name: "body",        widget: "markdown" }
+
+  # ── HOME-SIDAN (redigerbara texter) ──
+  - name: "home"
+    label: "Home Page"
+    files:
+      - name: "home"
+        label: "Home Content"
+        file: "_data/home.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow text",  name: "eyebrow",   widget: "string" }
+              - { label: "Headline line 1", name: "headline1", widget: "string" }
+              - { label: "Headline line 2 (italic)", name: "headline2", widget: "string" }
+              - { label: "Subtext",        name: "sub",       widget: "text" }
+              - { label: "Tagline",        name: "tagline",   widget: "string" }
+          - label: "Podcast section"
+            name: "podcast"
+            widget: "object"
+            fields:
+              - { label: "Heading",        name: "heading",   widget: "string" }
+              - { label: "Lead text",      name: "lead",      widget: "text" }
+              - { label: "Spotify URL",    name: "spotify",   widget: "string", required: false }
+              - { label: "Apple Podcasts URL", name: "apple", widget: "string", required: false }
+              - { label: "YouTube URL",    name: "youtube",   widget: "string", required: false }
+              - { label: "RSS URL",        name: "rss",       widget: "string", required: false }
+          - label: "Work With Us section"
+            name: "work"
+            widget: "object"
+            fields:
+              - { label: "Heading",        name: "heading",   widget: "string" }
+              - { label: "Lead text",      name: "lead",      widget: "text" }
+              - label: "Service 1"
+                name: "service1"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+              - label: "Service 2"
+                name: "service2"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+              - label: "Service 3"
+                name: "service3"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+
+  # ── GLOBAL INSTÄLLNINGAR ──
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "global"
+        label: "Global Settings"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Site title",       name: "siteTitle",   widget: "string" }
+          - { label: "Meta description", name: "metaDesc",    widget: "text" }
+          - { label: "Contact email",    name: "email",       widget: "string" }
+          - { label: "Instagram URL",    name: "instagram",   widget: "string", required: false }
+          - { label: "LinkedIn URL",     name: "linkedin",    widget: "string", required: false }
+          - { label: "YouTube channel URL", name: "youtube",  widget: "string", required: false }
+          - { label: "X / Twitter URL", name: "twitter",      widget: "string", required: false }
+          - { label: "Tagline",          name: "tagline",     widget: "string" }
+
+  # ── ABOUT / TEAM ──
+  - name: "team"
+    label: "Team Members"
+    folder: "_team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name",   name: "name",   widget: "string" }
+      - { label: "Role",   name: "role",   widget: "string" }
+      - { label: "Photo",  name: "photo",  widget: "image",   required: false }
+      - { label: "Bio",    name: "bio",    widget: "markdown" }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
