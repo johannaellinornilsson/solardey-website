@@ -1,0 +1,11 @@
+{
+  "name": "solardey-website",
+  "version": "1.0.0",
+  "description": "Solardey — Nordic-Nigeria solar platform",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
