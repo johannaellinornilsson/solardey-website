@@ -1,0 +1,129 @@
+/* =====================================================
+   SOLARDEY — Blog Post Page Styles
+   ===================================================== */
+
+.post-hero {
+  padding: 72px 0 80px;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+.post-hero .inner { position: relative; z-index: 1; max-width: 800px; }
+
+.post-tags-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.post-tags-row .blog-post-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--yellow-200);
+}
+.post-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 56px);
+  line-height: 1.08;
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: -.01em;
+  margin-bottom: 16px;
+}
+.post-meta-row {
+  display: flex; gap: 20px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+
+/* ── POST BODY ── */
+.post-body {
+  background: var(--white);
+  padding: 80px 0 96px;
+}
+.post-body .inner { max-width: 800px; }
+
+.post-content {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--gray-900);
+}
+.post-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 400;
+  color: var(--green-800);
+  margin: 56px 0 20px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+.post-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 400;
+  color: var(--green-800);
+  margin: 40px 0 14px;
+  line-height: 1.2;
+}
+.post-content p {
+  margin-bottom: 24px;
+  color: var(--gray-900);
+}
+.post-content p:last-child { margin-bottom: 0; }
+.post-content strong { font-weight: 700; }
+.post-content em { font-style: italic; }
+.post-content a {
+  color: var(--green-700);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.post-content a:hover { color: var(--green-500); }
+.post-content ul {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+.post-content ul li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  color: var(--gray-900);
+}
+.post-content ul li::before {
+  content: "";
+  position: absolute; left: 0; top: 14px;
+  width: 7px; height: 7px;
+  background: var(--green-500); border-radius: 50%;
+}
+.post-content blockquote {
+  border-left: 3px solid var(--yellow-200);
+  background: var(--cream);
+  padding: 20px 24px;
+  margin: 32px 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--green-800);
+  line-height: 1.5;
+}
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--gray-200);
+  margin: 48px 0;
+}
+
+.post-back {
+  display: inline-flex;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--gray-200);
+  width: 100%;
+  color: var(--green-700);
+  font-size: 13px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .post-hero  { padding: 48px 0 56px; }
+  .post-body  { padding: 48px 0 64px; }
+  .post-content { font-size: 16px; line-height: 1.7; }
+}
