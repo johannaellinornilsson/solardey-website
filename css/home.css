@@ -557,9 +557,9 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(66,42,0,.38) 0%,
-    rgba(22,56,27,.28) 50%,
-    rgba(10,20,10,.22) 100%
+    rgba(66,42,0,.55) 0%,
+    rgba(22,56,27,.45) 50%,
+    rgba(10,20,10,.38) 100%
   );
   z-index: 1;
 }
