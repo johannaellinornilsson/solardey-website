@@ -4,3 +4,5 @@ date: 2026-04-27T15:32:00.000+02:00
 excerpt: this is a test blog
 ---
 testing a blog post
+
+![](/assets/images/uploads/og-image.png)
