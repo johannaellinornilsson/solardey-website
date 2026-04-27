@@ -3,23 +3,22 @@
    Shared styles for podcast, stories, blog, network, about
    ===================================================== */
 
-/* ── PAGE HERO (shared across all inner pages) ── */
+/* ── PAGE HERO — base ── */
 .page-hero {
   padding: 80px 0 96px;
   position: relative;
   overflow: hidden;
-  color: var(--white);
 }
+.page-hero .inner { position: relative; z-index: 2; max-width: 900px; }
 .page-hero-deco {
   position: absolute;
   top: -8%; right: -4%;
   width: 440px;
-  color: var(--yellow-200);
   opacity: .07;
   pointer-events: none;
+  z-index: 1;
 }
 .page-hero-deco svg { width: 100%; }
-.page-hero .inner { position: relative; z-index: 1; max-width: 900px; }
 .page-hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -28,10 +27,9 @@
   font-weight: 700;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--yellow-200);
   margin-bottom: 18px;
 }
-.page-hero-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--yellow-200); }
+.page-hero-eyebrow::before { content: ""; width: 24px; height: 2px; display: inline-block; }
 .page-hero h1 {
   font-family: var(--font-display);
   font-size: clamp(40px, 5.5vw, 72px);
@@ -40,12 +38,86 @@
   letter-spacing: -.01em;
   margin-bottom: 18px;
 }
-.page-hero h1 em { color: var(--yellow-200); font-style: italic; }
 .page-hero p {
   font-size: 17px;
-  color: rgba(255,255,255,.82);
   max-width: 580px;
   line-height: 1.6;
+}
+
+/* ── DARK GREEN hero (default — Podcast, Solar Stories) ── */
+.page-hero-dark {
+  background: var(--green-800);
+  color: var(--white);
+}
+.page-hero-dark .page-hero-deco { color: var(--yellow-200); }
+.page-hero-dark .page-hero-eyebrow { color: var(--yellow-200); }
+.page-hero-dark .page-hero-eyebrow::before { background: var(--yellow-200); }
+.page-hero-dark h1 { color: var(--white); }
+.page-hero-dark h1 em { color: var(--yellow-200); font-style: italic; }
+.page-hero-dark p { color: rgba(255,255,255,.82); }
+
+/* Photo background variant (Podcast, Solar Stories) */
+.page-hero-photo {
+  color: var(--white);
+}
+.page-hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  background-color: var(--green-800);
+}
+.page-hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(66,42,0,.62) 0%,
+    rgba(22,56,27,.52) 50%,
+    rgba(10,20,10,.42) 100%
+  );
+  z-index: 1;
+}
+.page-hero-photo .page-hero-deco { color: var(--yellow-200); }
+.page-hero-photo .page-hero-eyebrow { color: var(--yellow-200); }
+.page-hero-photo .page-hero-eyebrow::before { background: var(--yellow-200); }
+.page-hero-photo h1 { color: var(--white); }
+.page-hero-photo h1 em { color: var(--yellow-200); font-style: italic; }
+.page-hero-photo p { color: rgba(255,255,255,.82); }
+
+/* ── LIGHT hero (Network, Blog) ── */
+.page-hero-light {
+  background: var(--cream);
+  color: var(--gray-900);
+  border-left: 5px solid var(--green-800);
+  border-bottom: 2px solid var(--green-800);
+}
+.page-hero-light .page-hero-deco { color: var(--green-800); }
+.page-hero-light .page-hero-eyebrow { color: var(--green-700); }
+.page-hero-light .page-hero-eyebrow::before { background: var(--green-700); }
+.page-hero-light h1 { color: var(--green-800); }
+.page-hero-light h1 em { color: var(--green-500); font-style: italic; }
+.page-hero-light p { color: var(--gray-700); }
+
+/* ── YELLOW hero (About) ── */
+.page-hero-yellow {
+  background: var(--yellow-200);
+  color: var(--gray-900);
+  border-left: 5px solid var(--green-800);
+}
+.page-hero-yellow .page-hero-deco { color: var(--green-800); }
+.page-hero-yellow .page-hero-eyebrow { color: var(--yellow-800); }
+.page-hero-yellow .page-hero-eyebrow::before { background: var(--yellow-800); }
+.page-hero-yellow h1 { color: var(--green-800); }
+.page-hero-yellow h1 em { color: var(--green-700); font-style: italic; }
+.page-hero-yellow p { color: var(--yellow-800); }
+.page-hero-yellow-tagline {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(22,56,27,.5);
 }
 
 /* ── SECTION HEADING (reusable) ── */
@@ -350,9 +422,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  width: 100%;
 }
-@media (max-width: 600px) {
-  .stories-context-grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .stories-context-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
 }
 
 /* About: Work features grid */
