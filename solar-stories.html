@@ -80,6 +80,12 @@
 </script>
   <!-- ═══ / SEO ═══ -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+@media (max-width: 768px) {
+  .stories-context-grid { display: block !important; }
+  .stories-context-grid > div { margin-bottom: 12px; width: 100%; }
+}
+</style>
 </head>
 <body>
 <header class="site-nav" role="banner">
@@ -121,7 +127,7 @@
       <p style="font-size:16px;color:var(--yellow-800);line-height:1.65;margin-bottom:16px;">Every Solar Story is a visit — a conversation with someone who decided to make the switch and lives with solar every day. They tell us why they did it, what changed, what surprised them, and what they would tell others.</p>
       <p style="font-size:16px;color:var(--yellow-800);line-height:1.65;">We film in Sweden and Nigeria, because the contexts are different — and because that difference is exactly what makes the stories worth telling side by side.</p>
     </div>
-    <div class="stories-context-grid">
+    <div class="stories-context-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div style="background:var(--white);padding:22px 18px;border-top:3px solid var(--green-700);">
         <div style="font-family:var(--font-display);font-style:italic;font-size:36px;color:var(--green-700);line-height:1;margin-bottom:8px;">SWE</div>
         <p style="font-size:13px;color:var(--gray-700);line-height:1.5;">Homes, farms, and businesses in Sweden sharing their solar journey.</p>
