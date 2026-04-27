@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://solardey-website.pages.dev
+display_url: https://solardey-website.pages.dev
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title",    name: "title",   widget: "string" }
+      - { label: "Date",     name: "date",     widget: "datetime" }
+      - { label: "Tags",     name: "tags",     widget: "list" }
+      - { label: "Excerpt",  name: "excerpt",  widget: "string" }
+      - { label: "Body",     name: "body",     widget: "markdown" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "global"
+        label: "Global Settings"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Contact email",   name: "email",     widget: "string" }
+          - { label: "Instagram URL",   name: "instagram", widget: "string", required: false }
+          - { label: "LinkedIn URL",    name: "linkedin",  widget: "string", required: false }
+          - { label: "YouTube URL",     name: "youtube",   widget: "string", required: false }
+          - { label: "Spotify URL",     name: "spotify",   widget: "string", required: false }
+          - { label: "Apple Podcasts URL", name: "apple",  widget: "string", required: false }
