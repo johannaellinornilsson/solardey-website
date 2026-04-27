@@ -1,0 +1,14 @@
+/assets/*.mp4
+  Content-Type: video/mp4
+
+/assets/images/*.mp4
+  Content-Type: video/mp4
+
+/assets/*.webm
+  Content-Type: video/webm
+
+/assets/svg/*.svg
+  Content-Type: image/svg+xml
+
+/assets/images/*.svg
+  Content-Type: image/svg+xml
