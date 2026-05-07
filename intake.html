@@ -385,11 +385,53 @@
 </footer>
 
 <script>
-  document.getElementById('intakeForm').addEventListener('submit', function(e) {
+  document.getElementById('intakeForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    document.getElementById('intakeForm').style.display = 'none';
-    document.getElementById('successMsg').classList.add('visible');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const form    = e.target;
+    const btn     = form.querySelector('.btn-submit');
+    const formId  = 'xgodzgal'; // Replace with your Formspree form ID
+
+    // Basic validation
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderColor = '#e53e3e';
+        valid = false;
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+    if (!valid) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // Submit
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(`https://formspree.io/f/${formId}`, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('successMsg').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      btn.textContent = 'Submit Project Intake';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again or email prosper@solardey.com directly.');
+    }
   });
 </script>
 </body>
