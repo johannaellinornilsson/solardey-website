@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+Disallow: /intake
+
 Sitemap: https://solardey.com/sitemap.xml
