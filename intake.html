@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Intake Form — Solardey Nordic Financing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-800: #16381B;
+    --green-700: #1a4a22;
+    --green-600: #268535;
+    --green-500: #64B837;
+    --green-100: #eaf5e0;
+    --yellow-main: #F4EE49;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-50: #f8f8f6;
+    --gray-100: #f1f1ee;
+    --gray-200: #e3e3de;
+    --gray-400: #9a9a93;
+    --gray-600: #5a5a55;
+    --gray-700: #3a3a36;
+    --gray-800: #2a2a27;
+    --font: 'Barlow', sans-serif;
+    --font-condensed: 'Barlow Condensed', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--gray-50); color: var(--gray-800); min-height: 100vh; }
+
+  .site-header { background: var(--green-800); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-symbol { width: 34px; height: 34px; }
+  .logo-text { font-family: var(--font-condensed); font-weight: 700; font-size: 22px; letter-spacing: 0.04em; color: var(--yellow-main); text-transform: uppercase; }
+  .header-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+  .hero { background: var(--green-800); padding: 3rem 2rem 2.5rem; border-bottom: 4px solid var(--yellow-main); }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .hero-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow-main); margin-bottom: 0.75rem; }
+  .hero h1 { font-family: var(--font-condensed); font-weight: 700; font-size: clamp(2rem,5vw,3rem); line-height: 1.05; text-transform: uppercase; color: #fff; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--yellow-main); }
+  .hero-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 520px; margin-bottom: 1.5rem; }
+  .hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .hero-meta-item { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .hero-meta-item strong { color: rgba(255,255,255,0.7); font-weight: 600; display: block; font-size: 13px; }
+
+  .main { max-width: 760px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+  .form-section { background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; margin-bottom: 1.25rem; overflow: hidden; }
+  .section-header { background: var(--gray-50); border-bottom: 1px solid var(--gray-200); padding: 0.875rem 1.5rem; display: flex; align-items: center; gap: 12px; }
+  .section-letter { width: 28px; height: 28px; border-radius: 2px; background: var(--green-800); color: var(--yellow-main); font-family: var(--font-condensed); font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-title { font-family: var(--font-condensed); font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-800); }
+  .section-body { padding: 1.5rem; display: grid; gap: 1.25rem; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field-label { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gray-600); display: flex; align-items: center; gap: 5px; }
+  .field-label .req { color: var(--green-600); font-size: 14px; }
+  .field-sublabel { font-size: 12px; color: var(--gray-400); margin-bottom: 2px; }
+
+  input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+    width: 100%; background: var(--white); border: 1px solid var(--gray-200); border-radius: 4px;
+    color: var(--gray-800); font-family: var(--font); font-size: 14px; padding: 0.6rem 0.85rem;
+    outline: none; transition: border-color 0.15s, box-shadow 0.15s; -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--gray-400); }
+  input:focus, select:focus, textarea:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(38,133,53,0.1); }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a55' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 2.5rem; }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+
+  .options-grid { display: flex; flex-direction: column; gap: 5px; }
+  .option-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 4px; cursor: pointer; transition: border-color 0.12s, background 0.12s; }
+  .option-item:hover { border-color: var(--green-500); background: var(--green-100); }
+  .option-item input[type="checkbox"], .option-item input[type="radio"] { width: 15px; height: 15px; min-width: 15px; accent-color: var(--green-700); margin-top: 2px; cursor: pointer; background: transparent; border: none; padding: 0; }
+  .option-item label { font-size: 13px; color: var(--gray-700); cursor: pointer; line-height: 1.4; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+
+  .disclaimer { background: var(--gray-50); border: 1px solid var(--gray-200); border-left: 3px solid var(--green-500); border-radius: 4px; padding: 1rem 1.25rem; font-size: 12px; color: var(--gray-400); line-height: 1.6; margin-bottom: 1.25rem; }
+  .disclaimer strong { color: var(--gray-600); }
+
+  .dfi-box { background: var(--white); border: 1px solid var(--gray-200); border-top: 3px solid var(--green-800); border-radius: 6px; padding: 1.5rem; margin-bottom: 1.25rem; }
+  .dfi-box h3 { font-family: var(--font-condensed); font-weight: 700; font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--green-800); margin-bottom: 1rem; }
+  .dfi-params { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+  .dfi-param { text-align: center; padding: 0.75rem; background: var(--gray-50); border-radius: 4px; border: 1px solid var(--gray-200); }
+  .dfi-param-value { font-family: var(--font-condensed); font-weight: 700; font-size: 17px; color: var(--green-800); display: block; }
+  .dfi-param-label { font-size: 10px; color: var(--gray-400); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; display: block; }
+  .dfi-institutions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dfi-tag { background: var(--green-100); border: 1px solid rgba(38,133,53,0.2); border-radius: 3px; padding: 3px 10px; font-size: 12px; color: var(--green-700); font-weight: 600; }
+
+  .submit-area { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding-top: 0.5rem; }
+  .btn-submit { background: var(--green-800); color: var(--yellow-main); border: none; border-radius: 4px; font-family: var(--font-condensed); font-weight: 700; font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 3rem; cursor: pointer; transition: background 0.15s, transform 0.1s; width: 100%; max-width: 360px; }
+  .btn-submit:hover { background: var(--green-700); }
+  .btn-submit:active { transform: scale(0.98); }
+  .submit-note { font-size: 11px; color: var(--gray-400); text-align: center; line-height: 1.7; }
+
+  .site-footer { border-top: 1px solid var(--gray-200); background: var(--white); padding: 1.5rem 2rem; text-align: center; }
+  .footer-contact { font-size: 12px; color: var(--gray-400); line-height: 1.8; }
+  .footer-contact a { color: var(--green-700); text-decoration: none; }
+
+  .success-msg { display: none; text-align: center; padding: 4rem 1.5rem; background: var(--white); border-radius: 6px; border: 1px solid var(--gray-200); }
+  .success-msg.visible { display: block; }
+  .success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--green-100); border: 2px solid var(--green-600); color: var(--green-700); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 22px; font-weight: 700; }
+  .success-msg h2 { font-family: var(--font-condensed); font-size: 1.75rem; font-weight: 700; text-transform: uppercase; color: var(--green-800); margin-bottom: 0.75rem; }
+  .success-msg p { font-size: 14px; color: var(--gray-600); line-height: 1.6; max-width: 400px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#" class="logo">
+    <svg class="logo-symbol" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="15,5 85,5 85,95 15,95" fill="none" stroke="#F4EE49" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M50 30 C40 30 30 40 30 50 C30 60 40 70 50 70 C60 70 70 60 70 50 C70 40 60 30 50 30 Z M50 30 L50 15 M50 70 L50 85 M30 50 L15 50 M70 50 L85 50 M36 36 L25 25 M64 64 L75 75 M64 36 L75 25 M36 64 L25 75" stroke="#F4EE49" stroke-width="5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="logo-text">Solardey</span>
+  </a>
+  <span class="header-badge">Strictly Confidential</span>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Nordic Institutional Financing</p>
+    <h1>Project Intake Form<br><span>Solar + Battery Installation, Abuja</span></h1>
+    <p class="hero-desc">Please complete all sections. Fields marked <strong style="color:var(--yellow-main)">*</strong> are required. All information is treated as strictly confidential.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Prepared by</strong>Arinze Prosper Emegoakor</div>
+      <div class="hero-meta-item"><strong>Contact</strong>prosper@solardey.com</div>
+      <div class="hero-meta-item"><strong>Phone</strong>+46 70 423 05 11</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <form id="intakeForm" novalidate>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">A</div><span class="section-title">Project Overview</span></div>
+      <div class="section-body">
+        <div class="field"><label class="field-label">A1. Project name / working title <span class="req">*</span></label><input type="text" name="a1_project_name" required placeholder="e.g. Abuja Federal Ministry Solar Project"></div>
+        <div class="two-col">
+          <div class="field"><label class="field-label">A2. Installed solar capacity <span class="req">*</span></label><p class="field-sublabel">e.g. 1.5 MWp</p><input type="text" name="a2_solar_capacity" required placeholder="1.5 MWp"></div>
+          <div class="field"><label class="field-label">A3. Battery storage capacity</label><p class="field-sublabel">e.g. 2.0 MWh</p><input type="text" name="a3_battery_capacity" placeholder="2.0 MWh"></div>
+        </div>
+        <div class="field"><label class="field-label">A4. Project location <span class="req">*</span></label><p class="field-sublabel">e.g. Abuja (FCT), Nigeria — specify site address if available</p><input type="text" name="a4_location" required placeholder="Abuja (FCT), Nigeria"></div>
+        <div class="field"><label class="field-label">A5. Project type <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="a5_project_type" value="captive"><label>Captive power — behind-the-meter (serving an institution or company)</label></label>
+            <label class="option-item"><input type="radio" name="a5_project_type" value="ipp"><label>Independent Power Producer (IPP) — grid-tied</label></label>
+            <label class="option-item"><input type="radio" name="a5_project_type" value="minigrid"><label>Mini-grid</label></label>
+            <label class="option-item"><input type="radio" name="a5_project_type" value="hybrid"><label>Hybrid — captive + grid export</label></label>
+            <label class="option-item"><input type="radio" name="a5_project_type" value="other"><label>Other</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">A6. Offtaker / end electricity user <span class="req">*</span></label><p class="field-sublabel">Full name of the institution, company, or government body that will receive the electricity</p><input type="text" name="a6_offtaker" required></div>
+        <div class="field"><label class="field-label">A7. Is the offtaker a Federal Government of Nigeria (FGN) institution? <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="a7_fgn" value="yes_federal"><label>Yes — FGN federal institution (ministry, agency, or parastatal)</label></label>
+            <label class="option-item"><input type="radio" name="a7_fgn" value="yes_state"><label>Yes — state government institution</label></label>
+            <label class="option-item"><input type="radio" name="a7_fgn" value="no_private"><label>No — private sector offtaker</label></label>
+            <label class="option-item"><input type="radio" name="a7_fgn" value="mixed"><label>Mixed (public + private)</label></label>
+            <label class="option-item"><input type="radio" name="a7_fgn" value="nda"><label>To be confirmed — information is subject to NDA</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">A8. Brief project description</label><p class="field-sublabel">Describe the project context, purpose, and intended impact in 4–6 sentences</p><textarea name="a8_description" rows="5" placeholder="Describe the project context, purpose, and intended impact..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">B</div><span class="section-title">Company &amp; Legal Structure</span></div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="field"><label class="field-label">B1. EPC company name <span class="req">*</span></label><input type="text" name="b1_epc_name" required></div>
+          <div class="field"><label class="field-label">B2. Country of incorporation <span class="req">*</span></label><input type="text" name="b2_country" required></div>
+        </div>
+        <div class="field"><label class="field-label">B3. CAC registration number (if Nigerian entity)</label><input type="text" name="b3_cac"></div>
+        <div class="field"><label class="field-label">B4. Has a Special Purpose Vehicle (SPV) been incorporated for this project? <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="b4_spv" value="yes"><label>Yes — SPV is incorporated</label></label>
+            <label class="option-item"><input type="radio" name="b4_spv" value="in_progress"><label>In progress — incorporation underway</label></label>
+            <label class="option-item"><input type="radio" name="b4_spv" value="planned"><label>Planned — not yet initiated</label></label>
+            <label class="option-item"><input type="radio" name="b4_spv" value="no"><label>No — project will be held under the existing EPC company</label></label>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="field"><label class="field-label">B5. SPV name (if applicable)</label><input type="text" name="b5_spv_name"></div>
+          <div class="field"><label class="field-label">B6. Key principals / shareholders of the SPV</label><p class="field-sublabel">Names and ownership percentages</p><textarea name="b6_shareholders" rows="3" placeholder="e.g. John Doe — 60%, Jane Smith — 40%"></textarea></div>
+        </div>
+        <div class="field"><label class="field-label">B7. Is the project open to a Swedish EPC co-partner? <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="b7_copartner" value="yes_informal"><label>Yes — open in principle (not yet formally documented)</label></label>
+            <label class="option-item"><input type="radio" name="b7_copartner" value="yes_formal"><label>Yes — can be formally stated in project documentation</label></label>
+            <label class="option-item"><input type="radio" name="b7_copartner" value="considering"><label>Under consideration — to be discussed</label></label>
+            <label class="option-item"><input type="radio" name="b7_copartner" value="no"><label>No</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">B8. Existing agreements with the institution / offtaker <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="checkbox" name="b8_agreements" value="mou"><label>Memorandum of Understanding (MOU) signed</label></label>
+            <label class="option-item"><input type="checkbox" name="b8_agreements" value="loi"><label>Letter of Intent (LoI) in place</label></label>
+            <label class="option-item"><input type="checkbox" name="b8_agreements" value="contract"><label>Formal EPC contract or award letter</label></label>
+            <label class="option-item"><input type="checkbox" name="b8_agreements" value="none"><label>None yet — currently at term sheet or discussion stage</label></label>
+            <label class="option-item"><input type="checkbox" name="b8_agreements" value="nda"><label>Confidential — subject to NDA</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">B9. Notes on existing agreements</label><p class="field-sublabel">Or confirm documents will follow under NDA</p><textarea name="b9_agreement_notes" rows="3"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">C</div><span class="section-title">Procurement &amp; Tendering Stage</span></div>
+      <div class="section-body">
+        <div class="field"><label class="field-label">C1. Current tendering / procurement stage <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="c1_stage" value="pre_tender"><label>Pre-tender — project in development or feasibility phase</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="eoi"><label>Expression of Interest (EOI) issued</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="rfp"><label>Request for Proposal (RFP) or Request for Quotation (RFQ) issued</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="bids_received"><label>Bids received — technical or financial evaluation underway</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="preferred_bidder"><label>Preferred bidder or EPC contractor selected — contract pending</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="awarded"><label>EPC contract awarded — project in pre-construction</label></label>
+            <label class="option-item"><input type="radio" name="c1_stage" value="construction"><label>Construction has commenced</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">C2. Procurement process followed</label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="c2_procurement" value="public"><label>Public competitive tender (BPP / Federal Government procurement rules)</label></label>
+            <label class="option-item"><input type="radio" name="c2_procurement" value="restricted"><label>Restricted or invited tender</label></label>
+            <label class="option-item"><input type="radio" name="c2_procurement" value="direct"><label>Direct negotiation / sole source</label></label>
+            <label class="option-item"><input type="radio" name="c2_procurement" value="dbfo"><label>Design-Build-Finance-Operate (DBFO)</label></label>
+            <label class="option-item"><input type="radio" name="c2_procurement" value="ppp"><label>Public-Private Partnership (PPP) / concession model</label></label>
+            <label class="option-item"><input type="radio" name="c2_procurement" value="tbd"><label>Not yet determined</label></label>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="field"><label class="field-label">C3. Expected date for EPC contractor selection</label><p class="field-sublabel">e.g. Q3 2025 or September 2025</p><input type="text" name="c3_contractor_date" placeholder="Q3 2025"></div>
+          <div class="field"><label class="field-label">C4. Target financial close date</label><input type="text" name="c4_financial_close" placeholder="Q4 2025"></div>
+        </div>
+        <div class="field"><label class="field-label">C5. Target project commissioning date</label><input type="text" name="c5_commissioning" placeholder="Q2 2026"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">D</div><span class="section-title">Project Economics &amp; Financing Structure</span></div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="field"><label class="field-label">D1. Estimated total project CAPEX <span class="req">*</span></label><p class="field-sublabel">e.g. USD 2,500,000</p><input type="text" name="d1_capex" required placeholder="USD 2,500,000"></div>
+          <div class="field"><label class="field-label">D2. Currency of project accounting</label>
+            <div class="options-grid" style="margin-top:2px">
+              <label class="option-item"><input type="radio" name="d2_currency" value="usd"><label>USD (US Dollar)</label></label>
+              <label class="option-item"><input type="radio" name="d2_currency" value="ngn"><label>NGN (Nigerian Naira)</label></label>
+              <label class="option-item"><input type="radio" name="d2_currency" value="eur"><label>EUR (Euro)</label></label>
+              <label class="option-item"><input type="radio" name="d2_currency" value="sek"><label>SEK (Swedish Krona)</label></label>
+              <label class="option-item"><input type="radio" name="d2_currency" value="mixed"><label>Mixed currencies</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">D3. Proposed financing structure <span class="req">*</span></label><p class="field-sublabel">e.g. 30% equity (project sponsor) / 70% senior debt — include any blended finance, concessional loan, or grant elements</p><textarea name="d3_financing_structure" required rows="3" placeholder="e.g. 30% equity (project sponsor) / 70% senior debt"></textarea></div>
+        <div class="field"><label class="field-label">D4. Financing instrument sought from Nordic investor (tick all that apply)</label>
+          <div class="options-grid">
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="senior_debt"><label>Senior debt</label></label>
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="junior_debt"><label>Junior / subordinated debt</label></label>
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="mezzanine"><label>Mezzanine financing (convertible)</label></label>
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="equity"><label>Equity / co-investment</label></label>
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="bridge"><label>Bridge loan</label></label>
+            <label class="option-item"><input type="checkbox" name="d4_instrument" value="blended"><label>Blended finance (combination of instruments)</label></label>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="field"><label class="field-label">D5. Amount of financing sought from Nordic investor (USD)</label><p class="field-sublabel">e.g. USD 1,750,000</p><input type="text" name="d5_amount" placeholder="USD 1,750,000"></div>
+          <div class="field"><label class="field-label">D6. Preferred loan tenor</label>
+            <div class="options-grid" style="margin-top:2px">
+              <label class="option-item"><input type="radio" name="d6_tenor" value="5"><label>5 years</label></label>
+              <label class="option-item"><input type="radio" name="d6_tenor" value="7"><label>7 years</label></label>
+              <label class="option-item"><input type="radio" name="d6_tenor" value="10"><label>10 years</label></label>
+              <label class="option-item"><input type="radio" name="d6_tenor" value="12"><label>12 years</label></label>
+              <label class="option-item"><input type="radio" name="d6_tenor" value="15"><label>15 years</label></label>
+              <label class="option-item"><input type="radio" name="d6_tenor" value="tbd"><label>Other / to be discussed with investor</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">D7. Revenue model / offtake agreement type</label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="d7_revenue" value="ppa"><label>Power Purchase Agreement (PPA)</label></label>
+            <label class="option-item"><input type="radio" name="d7_revenue" value="rent_to_own"><label>Rent-to-own / lease arrangement</label></label>
+            <label class="option-item"><input type="radio" name="d7_revenue" value="esa"><label>Energy Service Agreement (ESA)</label></label>
+            <label class="option-item"><input type="radio" name="d7_revenue" value="government"><label>Government procurement / budget appropriation</label></label>
+            <label class="option-item"><input type="radio" name="d7_revenue" value="tbd"><label>Not yet determined</label></label>
+            <label class="option-item"><input type="radio" name="d7_revenue" value="other"><label>Other</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">D8. Other financiers or co-investors already engaged</label><p class="field-sublabel">Name each institution and describe status</p><textarea name="d8_other_financiers" rows="3" placeholder="e.g. IFC (LOI signed), AfDB (preliminary discussion)..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">E</div><span class="section-title">Impact &amp; ESG Alignment</span></div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="field"><label class="field-label">E1. Estimated annual CO&#8322; displacement</label><p class="field-sublabel">e.g. approx. 1,800 tCO&#8322;e / year</p><input type="text" name="e1_co2" placeholder="approx. 1,800 tCO₂e / year"></div>
+          <div class="field"><label class="field-label">E2. Estimated jobs created</label><p class="field-sublabel">e.g. 12 direct, 4 permanent, 40 indirect</p><textarea name="e2_jobs" rows="3" placeholder="e.g. 12 direct construction jobs, 4 permanent operations jobs, 40 indirect jobs"></textarea></div>
+        </div>
+        <div class="field"><label class="field-label">E3. Gender &amp; diversity — 2X Global criteria (tick all that apply)</label>
+          <div class="options-grid">
+            <label class="option-item"><input type="checkbox" name="e3_gender" value="owned"><label>51% or more female ownership, or the business is founded by a woman</label></label>
+            <label class="option-item"><input type="checkbox" name="e3_gender" value="leadership"><label>30% or more women in senior leadership positions or on the board</label></label>
+            <label class="option-item"><input type="checkbox" name="e3_gender" value="workforce"><label>30–50%+ of the workforce are women (with quality employment conditions)</label></label>
+            <label class="option-item"><input type="checkbox" name="e3_gender" value="none"><label>None of the above / not yet assessed</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">E4. Relevant UN Sustainable Development Goals (SDGs) addressed</label><p class="field-sublabel">e.g. SDG 7 (Affordable &amp; Clean Energy), SDG 13 (Climate Action), SDG 8 (Decent Work &amp; Economic Growth)</p><textarea name="e4_sdgs" rows="3" placeholder="e.g. SDG 7, SDG 13, SDG 8..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">F</div><span class="section-title">NDA &amp; Confidentiality</span></div>
+      <div class="section-body">
+        <div class="field"><label class="field-label">F1. Is any project information subject to NDA or confidentiality requirements? <span class="req">*</span></label>
+          <div class="options-grid">
+            <label class="option-item"><input type="radio" name="f1_nda" value="yes_identity"><label>Yes — the identity of the FGN institution is confidential (NDA required before disclosure)</label></label>
+            <label class="option-item"><input type="radio" name="f1_nda" value="yes_full"><label>Yes — full project details require an NDA</label></label>
+            <label class="option-item"><input type="radio" name="f1_nda" value="partial"><label>Partial — some elements are confidential, others may be shared</label></label>
+            <label class="option-item"><input type="radio" name="f1_nda" value="no"><label>No — information may be shared openly at this stage</label></label>
+          </div>
+        </div>
+        <div class="field"><label class="field-label">F2. Disclosure details</label><p class="field-sublabel">Please describe what can and cannot be disclosed at this stage, and whether you require an NDA to be signed promptly</p><textarea name="f2_disclosure" rows="4"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-header"><div class="section-letter">G</div><span class="section-title">Contact Information</span></div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="field"><label class="field-label">G1. Primary contact full name <span class="req">*</span></label><input type="text" name="g1_name" required></div>
+          <div class="field"><label class="field-label">G2. Title / position <span class="req">*</span></label><input type="text" name="g2_title" required></div>
+        </div>
+        <div class="two-col">
+          <div class="field"><label class="field-label">G3. Email address <span class="req">*</span></label><input type="email" name="g3_email" required placeholder="name@company.com"></div>
+          <div class="field"><label class="field-label">G4. Phone number</label><input type="tel" name="g4_phone" placeholder="+234 ..."></div>
+        </div>
+        <div class="field"><label class="field-label">G5. Additional notes, context, or documents to share</label><textarea name="g5_notes" rows="4" placeholder="Any additional context you'd like to share..."></textarea></div>
+      </div>
+    </div>
+
+    <div class="dfi-box">
+      <h3>Nordic DFI — Indicative Financing Parameters</h3>
+      <div class="dfi-params">
+        <div class="dfi-param"><span class="dfi-param-value">6–12%</span><span class="dfi-param-label">Interest rate p.a.</span></div>
+        <div class="dfi-param"><span class="dfi-param-value">5–15 yrs</span><span class="dfi-param-label">Loan tenor</span></div>
+        <div class="dfi-param"><span class="dfi-param-value">USD 3M–30M+</span><span class="dfi-param-label">Ticket size</span></div>
+        <div class="dfi-param"><span class="dfi-param-value">Senior / Mezz / Equity</span><span class="dfi-param-label">Instruments</span></div>
+      </div>
+      <div class="dfi-institutions">
+        <span class="dfi-tag">Swedfund (SE)</span>
+        <span class="dfi-tag">Norfund (NO)</span>
+        <span class="dfi-tag">IFU (DK)</span>
+        <span class="dfi-tag">Finnfund (FI)</span>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> These financing parameters are indicative only, based on publicly available benchmarks across Nordic Development Finance Institutions. Actual terms will vary by institution and are subject to each institution's formal credit assessment process. The information does not constitute a commitment, term sheet, offer, or financial advice from any institution named above or from Arinze Prosper Emegoakor / Solardey.
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit">Submit completed form</button>
+      <p class="submit-note">Return completed form to: prosper@solardey.com · +46 70 423 05 11<br>Strictly confidential — prepared by Arinze Prosper Emegoakor for Nordic institutional financing</p>
+    </div>
+
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <div class="success-icon">&#10003;</div>
+    <h2>Form submitted</h2>
+    <p>Thank you. Your project intake form has been received. Arinze Prosper Emegoakor will be in touch shortly.<br><br>prosper@solardey.com &middot; +46 70 423 05 11</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p class="footer-contact">
+    Arinze Prosper Emegoakor — Strategic Development, Nigeria–Nordic Capital Bridge<br>
+    <a href="mailto:prosper@solardey.com">prosper@solardey.com</a> &middot; +46 70 423 05 11 &middot; <a href="https://solardey.com">solardey.com</a>
+  </p>
+</footer>
+
+<script>
+  document.getElementById('intakeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('intakeForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
