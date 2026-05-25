@@ -151,6 +151,10 @@
   width: 100%;
   transform: skewX(-10deg);
 }
+/* "Watch latest episode" arrow link */
+.s-podcast-watch { color: var(--green-800); margin-top: 4px; margin-bottom: 8px; }
+.s-podcast-watch:hover { color: var(--green-700); }
+
 /* "Available on all platforms" label */
 .s-podcast-left .btn { margin-top: 4px; }
 .s-platforms-label {
