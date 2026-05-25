@@ -154,7 +154,7 @@
       <div class="s-platforms">
         <a href="https://open.spotify.com/show/76hVYPuRJlF3wS2tYg7qUW?si=2TjYheLORMSo6CSpup5FMw" class="s-platform" target="_blank" rel="noopener"><span>Spotify</span></a>
         <a href="#" class="s-platform" target="_blank" rel="noopener"><span>Apple</span></a>
-        <a href="https://www.youtube.com/@solardeypodcast" target="_blank" rel="noopener"><span>YouTube</span></a>
+        <a href="https://www.youtube.com/@SolardeyPodcast" class="s-platform" target="_blank" rel="noopener"><span>YouTube</span></a>
         <a href="#" class="s-platform" target="_blank" rel="noopener"><span>RSS</span></a>
       </div>
     </div>
@@ -409,6 +409,10 @@
   </div>
 </footer>
 <script src="/js/main.js"></script>
+<script>
+  loadLatestEpisode('latest-episode', window.PODCAST_PLAYLIST_ID);
+  loadYouTubeVideos('stories-grid', window.STORIES_PLAYLIST_ID);
+</script>
 
   <script>
     if (window.netlifyIdentity) {
