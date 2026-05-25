@@ -217,7 +217,8 @@
     margin-top: 14px;
   }
 }
-.ep-card-body { padding: 20px 22px 22px; position: relative; padding-right: 170px; }
+.ep-card-body { padding: 20px 22px 22px; position: relative; }
+.ep-card-body:has(.ep-card-sticker) { padding-right: 170px; }
 .ep-card-label {
   font-size: 10px;
   font-weight: 700;
