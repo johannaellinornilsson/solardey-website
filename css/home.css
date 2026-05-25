@@ -192,20 +192,28 @@
 .ep-card:hover .ep-card-play { background: rgba(0,0,0,.35); }
 .ep-card-sticker {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%) skewX(-10deg);
   background: var(--yellow-200);
   color: var(--green-800);
   font-family: var(--font-display);
   font-style: italic;
   font-size: 13px;
-  padding: 6px 14px;
-  transform: skewX(-10deg);
+  padding: 7px 14px;
   z-index: 3;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 .ep-card-sticker > span { display: inline-block; transform: skewX(10deg); }
-.ep-card-body { padding: 20px 22px 22px; }
+@media (max-width: 520px) {
+  .ep-card-body { padding-right: 22px; }
+  .ep-card-sticker {
+    position: static;
+    transform: skewX(-10deg);
+    display: inline-block;
+    margin-top: 14px;
+  }
+}
+.ep-card-body { padding: 20px 22px 22px; position: relative; padding-right: 170px; }
 .ep-card-label {
   font-size: 10px;
   font-weight: 700;
