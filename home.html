@@ -145,15 +145,11 @@
     <div class="s-podcast-right">
       <!-- Latest episode — populated by JS if API key is set, else static fallback -->
       <a href="#" id="ep-preview-thumb" target="_blank" rel="noopener" style="display:none;max-width:100%;width:100%;aspect-ratio:16/9;background-color:var(--green-800);background-size:cover;background-position:center;position:relative;transform:skewX(-10deg);overflow:hidden;margin-bottom:0;text-decoration:none;"><span style="transform:skewX(10deg);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.2);transition:background 0.2s;"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.45)"/><path d="M16 12l14 8-14 8V12z" fill="#F4EE49"/></svg></span></a>
-      <div class="s-podcast-card" id="latest-episode">
-        <div class="s-podcast-ep-info">
-          <div class="s-podcast-ep-label">Latest Episode</div>
-          <div class="s-podcast-ep-title ep-title">Loading…</div>
-          <div class="s-podcast-ep-date ep-date"></div>
-        </div>
-        <a href="#" class="s-podcast-play ep-link" aria-label="Play latest episode">
-          <div class="sym" style="color:var(--green-800);width:22px;height:22px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        </a>
+      <div class="ep-meta" id="latest-episode">
+        <span class="ep-eyebrow">Latest Episode</span>
+        <h3 class="ep-title">Loading…</h3>
+        <span class="ep-date"></span>
+        <a href="#" class="ep-link arrow-link" target="_blank" rel="noopener">Watch on YouTube</a>
       </div>
     </div><!-- /s-podcast-right -->
   </div>

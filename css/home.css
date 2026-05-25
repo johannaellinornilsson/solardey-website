@@ -151,6 +151,42 @@
   width: 100%;
   transform: skewX(-10deg);
 }
+/* Editorial latest-episode meta block (under thumbnail) */
+.ep-meta {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.ep-meta .ep-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green-700);
+  margin-bottom: 4px;
+}
+.ep-meta .ep-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(24px, 2.8vw, 32px);
+  line-height: 1.15;
+  color: var(--green-800);
+  margin: 0;
+  letter-spacing: -.01em;
+}
+.ep-meta .ep-date {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--yellow-800);
+  opacity: .7;
+  margin-bottom: 8px;
+}
+.ep-meta .arrow-link { color: var(--green-800); margin-top: 4px; }
+.ep-meta .arrow-link:hover { color: var(--green-700); }
 .s-podcast-card > * { transform: skewX(10deg); }
 .s-podcast-ep-num {
   font-family: var(--font-display);
