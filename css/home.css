@@ -192,17 +192,17 @@
 .ep-card:hover .ep-card-play { background: rgba(0,0,0,.35); }
 .ep-card-sticker {
   position: absolute;
-  top: 14px;
+  bottom: 14px;
   right: 14px;
-  background: var(--green-800);
-  color: var(--yellow-200);
+  background: var(--yellow-200);
+  color: var(--green-800);
   font-family: var(--font-display);
   font-style: italic;
   font-size: 13px;
   padding: 6px 14px;
-  transform: skewX(-10deg) rotate(-3deg);
+  transform: skewX(-10deg);
   z-index: 3;
-  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
 }
 .ep-card-sticker > span { display: inline-block; transform: skewX(10deg); }
 .ep-card-body { padding: 20px 22px 22px; }
