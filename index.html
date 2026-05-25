@@ -195,16 +195,36 @@
       <div class="video-label">Latest episode</div>
       <div class="video-wrap">
         <iframe
-          src="https://www.youtube.com/embed/xdxnpDijuUo?list=PLt2q5BNHsCB4CUvbBRu5D5ythhycwFcvO&rel=0&modestbranding=1"
-          title="Solardey Podcast — EP. 01"
+          id="yt-embed"
+          src="https://www.youtube.com/embed/xdxnpDijuUo?rel=0&modestbranding=1"
+          title="Solardey Podcast — latest episode"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
           loading="lazy">
         </iframe>
       </div>
-      <p class="video-caption">Solar Gave Me Hope | My Redemption Story — Solardey EP. 01</p>
+      <p class="video-caption" id="yt-caption">Solar Gave Me Hope | My Redemption Story — Solardey EP. 01</p>
     </div>
   </main>
+
+  <script>
+    (async function () {
+      const PLAYLIST_ID = 'PLt2q5BNHsCB4CUvbBRu5D5ythhycwFcvO';
+      const rssUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=' + PLAYLIST_ID;
+      const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        if (data.status !== 'ok' || !data.items || !data.items.length) return;
+        const latest = data.items[0];
+        const videoId = new URL(latest.link).searchParams.get('v');
+        if (!videoId) return;
+        document.getElementById('yt-embed').src =
+          'https://www.youtube.com/embed/' + videoId + '?rel=0&modestbranding=1';
+        document.getElementById('yt-caption').textContent = latest.title;
+      } catch (_) {}
+    })();
+  </script>
 
   <footer>
     <div class="footer-inner">
