@@ -190,6 +190,21 @@
   transition: background .2s;
 }
 .ep-card:hover .ep-card-play { background: rgba(0,0,0,.35); }
+.ep-card-sticker {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--green-800);
+  color: var(--yellow-200);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13px;
+  padding: 6px 14px;
+  transform: skewX(-10deg) rotate(-3deg);
+  z-index: 3;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+}
+.ep-card-sticker > span { display: inline-block; transform: skewX(10deg); }
 .ep-card-body { padding: 20px 22px 22px; }
 .ep-card-label {
   font-size: 10px;
