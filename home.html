@@ -140,6 +140,7 @@
       <h2>More than a podcast. <em>Conversations that connect worlds.</em></h2>
       <p class="s-podcast-lead">Researchers, entrepreneurs, policymakers, and community voices — in conversation about how renewable energy contributes to resilient societies and everyday life.</p>
       <!-- Latest episode — populated by JS if API key is set, else static fallback -->
+      <a href="#" id="ep-preview-thumb" target="_blank" rel="noopener" style="display:none;max-width:480px;width:100%;aspect-ratio:16/9;background-color:var(--green-800);background-size:cover;background-position:center;position:relative;transform:skewX(-10deg);overflow:hidden;margin-bottom:4px;text-decoration:none;"><span style="transform:skewX(10deg);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.2);transition:background 0.2s;"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.45)"/><path d="M16 12l14 8-14 8V12z" fill="#F4EE49"/></svg></span></a>
       <div class="s-podcast-card" id="latest-episode">
         <div class="s-podcast-ep-num">—</div>
         <div class="s-podcast-ep-info">
@@ -410,7 +411,34 @@
 </footer>
 <script src="/js/main.js"></script>
 <script>
-  loadLatestEpisode('latest-episode', window.PODCAST_PLAYLIST_ID);
+  (async function () {
+    const pid = window.PODCAST_PLAYLIST_ID;
+    if (!pid) return;
+    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?playlist_id=' + pid);
+    try {
+      const data = await (await fetch(api)).json();
+      if (data.status !== 'ok' || !data.items || !data.items.length) return;
+      const item   = data.items[0];
+      const vid    = new URL(item.link).searchParams.get('v');
+      if (!vid) return;
+      const ytUrl  = 'https://youtube.com/watch?v=' + vid;
+      const thumb  = 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg';
+      const dated  = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      // Visa thumbnail
+      const t = document.getElementById('ep-preview-thumb');
+      if (t) { t.href = ytUrl; t.style.backgroundImage = "url('" + thumb + "')"; t.style.display = 'block'; }
+      // Uppdatera kortinfo
+      const card = document.getElementById('latest-episode');
+      if (card) {
+        const tt = card.querySelector('.ep-title');
+        const dd = card.querySelector('.ep-date');
+        const ll = card.querySelector('.ep-link');
+        if (tt) tt.textContent = item.title;
+        if (dd) dd.textContent = dated;
+        if (ll) ll.href = ytUrl;
+      }
+    } catch (_) {}
+  })();
   loadYouTubeVideos('stories-grid', window.STORIES_PLAYLIST_ID);
 </script>
 
