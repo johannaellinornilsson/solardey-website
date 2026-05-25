@@ -135,6 +135,8 @@
       <span class="eyebrow eyebrow-amber">The Solardey Podcast</span>
       <h2>More than a podcast. <em>Conversations that connect worlds.</em></h2>
       <p class="s-podcast-lead">Researchers, entrepreneurs, policymakers, and community voices — in conversation about how renewable energy contributes to resilient societies and everyday life.</p>
+      <a href="/podcast.html" class="btn btn-outline-dark"><span>All Episodes</span></a>
+      <p class="s-platforms-label">Available on all platforms</p>
       <div class="s-platforms">
         <a href="https://open.spotify.com/show/76hVYPuRJlF3wS2tYg7qUW?si=2TjYheLORMSo6CSpup5FMw" class="s-platform" target="_blank" rel="noopener"><span>Spotify</span></a>
         <a href="#" class="s-platform" target="_blank" rel="noopener"><span>Apple</span></a>
@@ -143,14 +145,19 @@
       </div>
     </div><!-- /s-podcast-left -->
     <div class="s-podcast-right">
-      <!-- Latest episode — populated by JS if API key is set, else static fallback -->
-      <a href="#" id="ep-preview-thumb" target="_blank" rel="noopener" style="display:none;max-width:100%;width:100%;aspect-ratio:16/9;background-color:var(--green-800);background-size:cover;background-position:center;position:relative;transform:skewX(-10deg);overflow:hidden;margin-bottom:0;text-decoration:none;"><span style="transform:skewX(10deg);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.2);transition:background 0.2s;"><svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="rgba(0,0,0,0.45)"/><path d="M16 12l14 8-14 8V12z" fill="#F4EE49"/></svg></span></a>
-      <div class="ep-meta" id="latest-episode">
-        <span class="ep-eyebrow">Latest Episode</span>
-        <h3 class="ep-title">Loading…</h3>
-        <span class="ep-date"></span>
-        <a href="#" class="ep-link arrow-link" target="_blank" rel="noopener">Watch on YouTube</a>
-      </div>
+      <!-- Latest episode — unified card populated by JS -->
+      <a href="#" id="latest-episode" class="ep-card ep-link" target="_blank" rel="noopener">
+        <div class="ep-card-thumb" id="ep-thumb">
+          <div class="ep-card-play">
+            <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="rgba(0,0,0,0.45)"/><path d="M18 13l15 9-15 9V13z" fill="#F4EE49"/></svg>
+          </div>
+        </div>
+        <div class="ep-card-body">
+          <div class="ep-card-label">Latest Episode</div>
+          <h3 class="ep-card-title ep-title">Loading…</h3>
+          <span class="ep-card-date ep-date"></span>
+        </div>
+      </a>
     </div><!-- /s-podcast-right -->
   </div>
 </section>
@@ -417,18 +424,16 @@
       const ytUrl  = 'https://youtube.com/watch?v=' + vid;
       const thumb  = 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg';
       const dated  = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-      // Visa thumbnail
-      const t = document.getElementById('ep-preview-thumb');
-      if (t) { t.href = ytUrl; t.style.backgroundImage = "url('" + thumb + "')"; t.style.display = 'block'; }
-      // Uppdatera kortinfo
+      // Uppdatera kortet (thumbnail + info i ett)
       const card = document.getElementById('latest-episode');
       if (card) {
+        card.href = ytUrl;
+        const thumbEl = document.getElementById('ep-thumb');
+        if (thumbEl) thumbEl.style.backgroundImage = "url('" + thumb + "')";
         const tt = card.querySelector('.ep-title');
         const dd = card.querySelector('.ep-date');
-        const ll = card.querySelector('.ep-link');
         if (tt) tt.textContent = item.title;
         if (dd) dd.textContent = dated;
-        if (ll) ll.href = ytUrl;
       }
     } catch (_) {}
   })();
