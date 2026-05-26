@@ -214,6 +214,14 @@
 </footer>
 <script src="/js/main.js"></script>
 <script>
+  // Episode descriptions — manually maintained until we have a proper YouTube API proxy.
+  // Add a new key:value pair (videoId: description) when new episodes launch.
+  const EPISODE_DESCRIPTIONS = {
+    'eCsMVhDDPTk': 'Why solar, why Sweden, why Nigeria, why me. The kickoff episode lays out Solardey’s mission — connecting two very different energy realities through stories that spark change.',
+    'xdxnpDijuUo': 'A personal redemption story. Prosper Emegoakor shares how building and losing ventures across construction and retail in Sweden led him to solar — and to the founding of Solardey.',
+    'ENrqO1YEliw': 'A short introduction to what Solardey is about — bridging Sweden and Nigeria through podcast conversations, networking, and the belief that energy is dignity, opportunity, and independence.'
+  };
+
   (async function () {
     const pid = window.PODCAST_PLAYLIST_ID;
     if (!pid) return;
@@ -245,21 +253,13 @@
       const list = document.getElementById('ep-list');
       if (list) {
         list.innerHTML = '';
-        const cleanDesc = (text) => {
-          if (!text) return '';
-          // Strip HTML tags, collapse whitespace
-          const div = document.createElement('div');
-          div.innerHTML = text;
-          const stripped = (div.textContent || '').replace(/\s+/g, ' ').trim();
-          return stripped.length > 180 ? stripped.slice(0, 180).trim() + '…' : stripped;
-        };
         const escapeHtml = (s) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
         data.items.slice(0, 5).forEach(item => {
           const vid = new URL(item.link).searchParams.get('v');
           if (!vid) return;
           const thumb = 'https://img.youtube.com/vi/' + vid + '/mqdefault.jpg';
           const dated = new Date(item.pubDate).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
-          const desc  = escapeHtml(cleanDesc(item.description));
+          const desc  = escapeHtml(EPISODE_DESCRIPTIONS[vid] || '');
           const li = document.createElement('li');
           li.className = 'ep-list-item';
           li.innerHTML =
