@@ -320,6 +320,40 @@
 .s-story-body { padding: 18px; }
 .s-story-loc { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--yellow-200); margin-bottom: 6px; }
 .s-story-body h3 { font-family: var(--font-display); font-size: 18px; font-weight: 400; color: var(--white); line-height: 1.2; }
+/* Coming Soon variant */
+.s-story-card--cs { cursor: default; }
+.s-story-card--cs:hover { transform: none; }
+.s-story-card--cs .s-story-thumb { position: relative; opacity: .55; }
+.s-story-card--cs .s-story-thumb::before {
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(0,0,0,.08) 14px 16px);
+  pointer-events: none;
+}
+.s-story-play--outline {
+  width: 48px; height: 48px;
+  background: transparent;
+  border: 2px solid var(--yellow-200);
+  color: var(--yellow-200);
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) skewX(-10deg);
+  z-index: 2;
+}
+.s-story-play--outline svg { transform: skewX(10deg); }
+.s-story-cs-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--yellow-200); color: var(--green-800);
+  font-family: var(--font-body);
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  padding: 4px 10px;
+  transform: skewX(-10deg);
+  z-index: 2;
+}
+.s-story-cs-title {
+  font-family: var(--font-display) !important;
+  font-style: italic;
+  color: var(--yellow-200) !important;
+}
 
 /* ── PILLARS ── */
 .s-pillars { padding: var(--section-padding); }
@@ -328,7 +362,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   margin-bottom: 40px;
-  align-items: end;
+  align-items: start;
 }
 .s-pillars-head h2 {
   font-family: var(--font-display);
