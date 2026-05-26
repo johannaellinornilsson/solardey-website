@@ -79,8 +79,12 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
 @media (max-width: 768px) {
-  .stories-context-grid { display: block !important; }
-  .stories-context-grid > div { margin-bottom: 12px; width: 100%; }
+  .about-series-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .stories-context-grid { grid-template-columns: 1fr 1fr !important; }
+  .stories-context-grid > div { width: 100%; }
+}
+@media (max-width: 420px) {
+  .stories-context-grid { grid-template-columns: 1fr !important; }
 }
 </style>
   <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">
@@ -123,7 +127,7 @@
 
 <!-- ABOUT THE SERIES -->
 <section style="background:var(--yellow-200);padding:80px 0;">
-  <div class="inner" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;">
+  <div class="inner about-series-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;">
     <div>
       <span class="eyebrow eyebrow-amber">About the Series</span>
       <h2 style="font-family:var(--font-display);font-size:clamp(32px,4vw,48px);line-height:1.05;color:var(--green-800);font-weight:400;margin-bottom:18px;">Solar is not just infrastructure. <em style="font-style:italic;">It is people.</em></h2>
