@@ -296,3 +296,93 @@
 .page-hero-photo h1 { color: var(--white); }
 .page-hero-photo h1 em { color: var(--yellow-200); font-style: italic; }
 .page-hero-photo p { color: rgba(255,255,255,.82); }
+
+/* ── CREDENTIALS SECTION ── */
+.about-credentials .cred-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 64px;
+}
+.cred-stat {
+  background: var(--white);
+  padding: 28px 22px;
+  border-top: 3px solid var(--green-700);
+}
+.cred-stat-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(36px, 4.5vw, 52px);
+  color: var(--green-700);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.cred-stat-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-700);
+}
+
+.cred-subhead {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green-700);
+  margin: 0 0 16px;
+}
+
+.cred-list {
+  list-style: none;
+  margin: 0 0 56px;
+  padding: 0;
+}
+.cred-item {
+  padding: 16px 0;
+  border-top: 1px solid rgba(22,56,27,.12);
+}
+.cred-list .cred-item:last-child { border-bottom: 1px solid rgba(22,56,27,.12); }
+.cred-item-main {
+  font-size: 16px;
+  color: var(--green-800);
+  margin-bottom: 4px;
+}
+.cred-item-meta {
+  font-size: 13px;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.cred-quote {
+  margin: 0 0 64px;
+  padding: 32px 0;
+  border-top: 2px solid var(--green-700);
+  border-bottom: 2px solid var(--green-700);
+}
+.cred-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.3;
+  color: var(--green-800);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+.cred-quote cite {
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green-700);
+}
+
+@media (max-width: 768px) {
+  .about-credentials .cred-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .about-credentials .cred-stats { grid-template-columns: 1fr; }
+}
