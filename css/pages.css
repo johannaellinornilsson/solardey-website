@@ -224,9 +224,9 @@
 }
 .ep-list-link {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
-  padding: 16px 4px;
+  padding: 18px 4px;
   text-decoration: none;
   color: inherit;
   transition: background .2s, padding .2s;
@@ -253,7 +253,7 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--green-800);
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -261,10 +261,26 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+.ep-list-desc {
+  font-size: 13px;
+  color: var(--gray-700);
+  line-height: 1.5;
+  margin: 0 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 .ep-list-date {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--gray-500);
-  letter-spacing: .04em;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+@media (max-width: 520px) {
+  .ep-list-desc { -webkit-line-clamp: 3; font-size: 12px; }
 }
 .ep-list-arrow {
   flex-shrink: 0;
