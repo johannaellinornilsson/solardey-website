@@ -280,10 +280,10 @@
 .s-stories { padding: var(--section-padding); }
 .s-stories-head {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 40px;
-  gap: 40px;
+  gap: 20px;
 }
 .s-stories-head-left { max-width: 580px; }
 .s-stories-head h2 {
@@ -358,12 +358,13 @@
 /* ── PILLARS ── */
 .s-pillars { padding: var(--section-padding); }
 .s-pillars-head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   margin-bottom: 40px;
-  align-items: start;
+  max-width: 720px;
 }
+.s-pillars-head p { max-width: 600px; }
 .s-pillars-head h2 {
   font-family: var(--font-display);
   font-size: clamp(36px, 4vw, 52px);
