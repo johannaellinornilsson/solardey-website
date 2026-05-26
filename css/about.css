@@ -267,3 +267,32 @@
   .faq-item > summary { padding: 18px 36px 18px 0; }
   .faq-answer { padding: 0 36px 20px 0; }
 }
+
+/* ── PHOTO HERO (copied from pages.css for about page) ── */
+.page-hero-photo {
+  color: var(--white);
+}
+.page-hero-photo-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  background-color: var(--green-800);
+}
+.page-hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(66,42,0,.62) 0%,
+    rgba(22,56,27,.52) 50%,
+    rgba(10,20,10,.42) 100%
+  );
+  z-index: 1;
+}
+.page-hero-photo .page-hero-eyebrow { color: var(--yellow-200); }
+.page-hero-photo .page-hero-eyebrow::before { background: var(--yellow-200); }
+.page-hero-photo h1 { color: var(--white); }
+.page-hero-photo h1 em { color: var(--yellow-200); font-style: italic; }
+.page-hero-photo p { color: rgba(255,255,255,.82); }
