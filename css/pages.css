@@ -5,7 +5,7 @@
 
 /* ── PAGE HERO — base ── */
 .page-hero {
-  padding: 80px 0 96px;
+  padding: 120px 0 132px;
   position: relative;
   overflow: hidden;
 }
@@ -80,11 +80,11 @@
   z-index: 1;
 }
 .page-hero-photo .page-hero-deco { color: var(--yellow-200); }
-.page-hero-photo .page-hero-eyebrow { color: var(--yellow-200); }
+.page-hero-photo .page-hero-eyebrow { color: var(--yellow-200); text-shadow: 0 1px 8px rgba(0,0,0,.45); }
 .page-hero-photo .page-hero-eyebrow::before { background: var(--yellow-200); }
-.page-hero-photo h1 { color: var(--white); }
+.page-hero-photo h1 { color: var(--white); text-shadow: 0 2px 24px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4); }
 .page-hero-photo h1 em { color: var(--yellow-200); font-style: italic; }
-.page-hero-photo p { color: rgba(255,255,255,.82); }
+.page-hero-photo p { color: rgba(255,255,255,.92); text-shadow: 0 1px 12px rgba(0,0,0,.5); }
 
 /* ── LIGHT hero (Network, Blog) ── */
 .page-hero-light {
