@@ -323,10 +323,10 @@
 /* Coming Soon variant */
 .s-story-card--cs { cursor: default; }
 .s-story-card--cs:hover { transform: none; }
-.s-story-card--cs .s-story-thumb { position: relative; opacity: .55; }
+.s-story-card--cs .s-story-thumb { position: relative; }
 .s-story-card--cs .s-story-thumb::before {
   content: ""; position: absolute; inset: 0;
-  background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(0,0,0,.08) 14px 16px);
+  background: rgba(22,56,27,.35);
   pointer-events: none;
 }
 .s-story-play--outline {
@@ -675,12 +675,14 @@
 .s-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(66,42,0,.55) 0%,
-    rgba(22,56,27,.45) 50%,
-    rgba(10,20,10,.38) 100%
-  );
+  background:
+    radial-gradient(ellipse at 78% 18%, rgba(244,238,73,.28) 0%, rgba(244,238,73,0) 55%),
+    linear-gradient(
+      155deg,
+      rgba(143,90,0,.46) 0%,
+      rgba(194,159,19,.34) 45%,
+      rgba(38,80,30,.46) 100%
+    );
   z-index: 1;
 }
 .s-hero .inner,
