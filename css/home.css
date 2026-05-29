@@ -35,6 +35,7 @@
   text-transform: uppercase;
   color: var(--yellow-200);
   margin-bottom: 22px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.45);
 }
 .s-hero-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--yellow-200); }
 .s-hero h1 {
@@ -45,14 +46,16 @@
   letter-spacing: -.01em;
   color: var(--white);
   margin-bottom: 20px;
+  text-shadow: 0 2px 24px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4);
 }
 .s-hero h1 em { color: var(--yellow-200); font-style: italic; }
 .s-hero-sub {
   font-size: 18px;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.92);
   max-width: 500px;
   margin-bottom: 32px;
   line-height: 1.55;
+  text-shadow: 0 1px 12px rgba(0,0,0,.5);
 }
 .s-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
 .ghost-link {
