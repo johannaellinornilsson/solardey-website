@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 
 Disallow: /intake
+Disallow: /coming-soon
+Disallow: /admin
 
 Sitemap: https://solardey.com/sitemap.xml
