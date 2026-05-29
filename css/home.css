@@ -671,6 +671,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  filter: saturate(1.25) brightness(1.08) contrast(1.03) sepia(.08);
 }
 .s-hero-overlay {
   position: absolute;
