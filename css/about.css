@@ -295,7 +295,7 @@
 .page-hero-photo .page-hero-eyebrow::before { background: var(--yellow-200); }
 .page-hero-photo h1 { color: var(--white); text-shadow: 0 2px 24px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4); }
 .page-hero-photo h1 em { color: var(--yellow-200); font-style: italic; }
-.page-hero-photo p { color: rgba(255,255,255,.92); text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.page-hero-photo p { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 2px 18px rgba(0,0,0,.6); }
 
 /* ── CREDENTIALS SECTION ── */
 .about-credentials .cred-stats {
