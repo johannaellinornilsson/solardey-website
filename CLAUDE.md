@@ -27,16 +27,16 @@ solardey-website/
 ├── js/main.js              ← Nav burger, YouTube proxy helpers (proxy disabled)
 ├── assets/
 │   ├── svg/                ← favicon, logo
-│   └── images/             ← Hero images, prosper.png, episode previews
+│   └── images/             ← Hero images, prosper.webp, episode previews
 ├── _posts/                 ← Blog markdown (processed by build.js)
 └── build.js                ← Blog builder only, doesn't touch index/main pages
 ```
 
 ### Key file conventions
-- Hero images: `hero-{page}.png` (hero-podcast.jpg, hero-solar.jpg, hero-about.png, hero-network.png)
-- Episode previews: `{city}.png` (malmo.png, arlov.png, hagestad.png) — note `arlov.png` is used for the **Åkarp** episode
+- Hero images: `hero-{page}.webp` (hero-podcast.jpg, hero-solar.jpg, hero-about.webp, hero-network.webp) — heavy PNGs converted to WebP for performance
+- Episode previews: `{city}.webp` (malmo.webp, arlov.webp, hagestad.webp) — note `arlov.webp` is used for the **Åkarp** episode
 - Source video master: `hero-source.mp4` (158MB, should be moved OUT of project to avoid deploy)
-- Optimized hero: `hero.mp4` (4.5MB, 1080p, no audio)
+- Optimized hero: `hero.mp4` (1.7MB, max 1280px, no audio) + `hero-poster.webp` poster frame
 
 ---
 
@@ -107,9 +107,9 @@ solardey-website/
 
 ### Solar Stories (Coming Soon state)
 Three episodes filmed/planned, all in Sweden:
-- EP 01: **Malmö** (`malmo.png`)
-- EP 02: **Åkarp** (`arlov.png` — file misnamed, intentional)
-- EP 03: **Hagestad** (`hagestad.png`)
+- EP 01: **Malmö** (`malmo.webp`)
+- EP 02: **Åkarp** (`arlov.webp` — file misnamed, intentional)
+- EP 03: **Hagestad** (`hagestad.webp`)
 On home.html and solar-stories.html they appear as a "filmstrip" with location badges + "Coming soon" italic text.
 
 ### Podcast episode descriptions
