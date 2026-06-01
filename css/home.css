@@ -137,7 +137,7 @@
   letter-spacing: -.01em;
   margin-bottom: 18px;
 }
-.s-podcast-left h2 em { color: var(--green-500); font-style: italic; }
+.s-podcast-left h2 em { color: var(--green-700); font-style: italic; }
 .s-podcast-lead {
   font-size: 16px;
   color: var(--yellow-800);
@@ -166,7 +166,6 @@
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--yellow-800);
-  opacity: .65;
   margin: 22px 0 10px;
 }
 
@@ -298,7 +297,7 @@
   letter-spacing: -.01em;
   margin-bottom: 12px;
 }
-.s-stories-head h2 em { color: var(--green-500); font-style: italic; }
+.s-stories-head h2 em { color: var(--green-700); font-style: italic; }
 .s-stories-head p { color: var(--gray-700); font-size: 16px; line-height: 1.6; }
 .s-stories-grid { gap: 18px; }
 .s-story-card { width: 320px; background: var(--green-800); overflow: hidden; transition: transform .3s; }
@@ -376,7 +375,7 @@
   font-weight: 400;
   letter-spacing: -.01em;
 }
-.s-pillars-head h2 em { color: var(--green-500); font-style: italic; }
+.s-pillars-head h2 em { color: var(--green-700); font-style: italic; }
 .s-pillars-head p { font-size: 16px; color: var(--gray-700); line-height: 1.6; }
 .s-pillars-grid { gap: 20px; }
 .s-pillar {
@@ -454,7 +453,7 @@
   background: rgba(255,255,255,.04);
   border-left: 3px solid var(--yellow-200);
 }
-.s-work-feature h4 {
+.s-work-feature h3 {
   font-family: var(--font-display);
   font-size: 22px; font-weight: 400;
   color: var(--yellow-200);
@@ -504,12 +503,12 @@
   font-weight: 400;
   letter-spacing: -.01em;
 }
-.s-blog-head h2 em { color: var(--green-500); font-style: italic; }
+.s-blog-head h2 em { color: var(--green-700); font-style: italic; }
 .s-blog-head p { color: var(--gray-700); max-width: 360px; font-size: 15px; }
 .s-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .s-blog-card { border-top: 2px solid var(--green-800); padding-top: 20px; }
 .s-blog-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-.s-blog-tag { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--green-700); }
+.s-blog-tag { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--green-800); }
 .s-blog-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; line-height: 1.25; color: var(--green-800); margin-bottom: 10px; }
 .s-blog-card h3 a { transition: color .2s; }
 .s-blog-card h3 a:hover { color: var(--green-500); }
@@ -539,7 +538,7 @@
   font-weight: 400; letter-spacing: -.01em;
   margin-bottom: 16px;
 }
-.s-network h2 em { color: var(--green-500); font-style: italic; }
+.s-network h2 em { color: var(--green-700); font-style: italic; }
 .s-network p { font-size: 15px; color: var(--gray-700); line-height: 1.6; margin-bottom: 22px; }
 .s-network-visual {
   position: relative;
@@ -720,7 +719,7 @@
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--gray-500);
+  color: var(--gray-700);
 }
 .carousel-hint::before { content: "← "; }
 .carousel-hint::after  { content: " →"; }
