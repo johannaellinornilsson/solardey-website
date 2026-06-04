@@ -211,7 +211,6 @@
 }
 .ep-card-sticker > span { display: inline-block; transform: skewX(10deg); }
 @media (max-width: 520px) {
-  .ep-card-body { padding-right: 22px; }
   .ep-card-sticker {
     position: static;
     transform: skewX(-10deg);
@@ -220,7 +219,13 @@
   }
 }
 .ep-card-body { padding: 20px 22px 22px; position: relative; }
-.ep-card-body:has(.ep-card-sticker) { padding-right: 170px; }
+/* Reserve room for the absolutely-positioned sticker only on wider screens.
+   On mobile the sticker flows below the text, so no right gutter is needed —
+   scoping to min-width avoids a :has() specificity win leaving a tall, empty
+   right column on phones. */
+@media (min-width: 521px) {
+  .ep-card-body:has(.ep-card-sticker) { padding-right: 170px; }
+}
 .ep-card-label {
   font-size: 10px;
   font-weight: 700;
