@@ -1,0 +1,7 @@
+# Solardey vulnerability disclosure
+# https://solardey.com/.well-known/security.txt
+
+Contact: mailto:prosper@solardey.com
+Expires: 2027-06-04T00:00:00.000Z
+Preferred-Languages: en, sv
+Canonical: https://solardey.com/.well-known/security.txt
