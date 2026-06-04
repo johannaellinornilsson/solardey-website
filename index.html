@@ -453,14 +453,21 @@
       const vid    = new URL(item.link).searchParams.get('v');
       if (!vid) return;
       const ytUrl  = 'https://youtube.com/watch?v=' + vid;
-      const thumb  = 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg';
+      const hqThumb  = 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg';
+      const maxThumb = 'https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg';
       const dated  = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
       // Uppdatera kortet (thumbnail + info i ett)
       const card = document.getElementById('latest-episode');
       if (card) {
         card.href = ytUrl;
         const thumbEl = document.getElementById('ep-thumb');
-        if (thumbEl) thumbEl.style.backgroundImage = "url('" + thumb + "')";
+        if (thumbEl) {
+          // Prefer sharp 16:9 maxres; fall back to hqdefault if the video has no HD thumbnail.
+          thumbEl.style.backgroundImage = "url('" + hqThumb + "')";
+          const probe = new Image();
+          probe.onload  = function () { if (probe.naturalWidth > 320) thumbEl.style.backgroundImage = "url('" + maxThumb + "')"; };
+          probe.src = maxThumb;
+        }
         const tt = card.querySelector('.ep-title');
         const dd = card.querySelector('.ep-date');
         if (tt) tt.textContent = item.title;

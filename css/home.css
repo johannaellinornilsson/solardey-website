@@ -703,6 +703,21 @@
 @media (max-width: 768px) {
   .s-hero { min-height: 420px; padding: 60px 0; }
   .s-hero h1 { font-size: 38px; }
+  /* Split-screen clips crop to their centre seam on a portrait screen — bias
+     to one side so a whole person stays in frame, and lay a soft scrim under
+     the text for legibility. Desktop (landscape) is untouched. */
+  .s-hero-video { object-position: 30% center; }
+  .s-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to top,
+      rgba(8,38,20,.72) 0%,
+      rgba(8,38,20,.32) 38%,
+      rgba(8,38,20,0)   68%);
+  }
 }
 
 
