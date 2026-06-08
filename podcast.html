@@ -222,7 +222,7 @@
   const EPISODE_DESCRIPTIONS = {
     ‘d0qSGHajyc4’: ‘A British solar installer working in Sweden shares candid field-level insights — what companies get wrong, what customers actually need, and what it takes to make solar work in the Nordic market.’,
     ‘W_bwC5tL6IE’: ‘The paradox at the heart of the African energy crisis: how can a continent bathed in sun still be energy-poor? A conversation about the real barriers blocking the solar transition.’,
-    ‘eCsMVhDDPTk’: ‘Why solar, why Sweden, why Nigeria, why me. The kickoff episode lays out Solardey’s mission — connecting two very different energy realities through stories that spark change.’,
+    ‘eCsMVhDDPTk’: ‘Why solar, why Sweden, why Nigeria, why me. The kickoff episode lays out Solardey\’s mission — connecting two very different energy realities through stories that spark change.’,
     ‘R1aAZnBiv6Q’: ‘Taking it to the streets — what do everyday people actually think about solar energy? Unfiltered answers from real conversations across the Nordic–Africa corridor.’,
     ‘x9CTjBwP7no’: ‘Solardey is building a community of solar storytellers. Whether you\’re a homeowner, installer, or change-maker — your story has a place here.’,
     ‘ENrqO1YEliw’: ‘A short introduction to what Solardey is about — bridging Sweden and Nigeria through podcast conversations, networking, and the belief that energy is dignity, opportunity, and independence.’,
@@ -234,10 +234,14 @@
   (async function () {
     const pid = window.PODCAST_PLAYLIST_ID;
     if (!pid) return;
-    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCYveJNvrEWk6CMoP-FHArXQ');
+    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?playlist_id=' + pid);
     try {
       const data = await (await fetch(api)).json();
-      if (data.status !== 'ok' || !data.items || !data.items.length) return;
+      if (data.status !== 'ok' || !data.items || !data.items.length) {
+        const list = document.getElementById('ep-list');
+        if (list) list.innerHTML = '<li class="ep-list-empty">Could not load episodes. <a href="https://www.youtube.com/@SolardeyPodcast" target="_blank" rel="noopener">Watch on YouTube →</a></li>';
+        return;
+      }
 
       // 1) Latest episode card
       const latest = data.items[0];
@@ -284,7 +288,10 @@
           list.appendChild(li);
         });
       }
-    } catch (_) {}
+    } catch (_) {
+      const list = document.getElementById('ep-list');
+      if (list) list.innerHTML = '<li class="ep-list-empty">Could not load episodes. <a href="https://www.youtube.com/@SolardeyPodcast" target="_blank" rel="noopener">Watch on YouTube →</a></li>';
+    }
   })();
 </script>
 </body>
