@@ -169,7 +169,7 @@ ${nav}
   <div class="post-body">
     <div class="inner">
       <div class="post-content">${html}</div>
-      <a href="/blog.html" class="arrow-link post-back">← Back to all posts</a>
+      <a href="/blog" class="arrow-link post-back">← Back to all posts</a>
     </div>
   </div>
 </article>
