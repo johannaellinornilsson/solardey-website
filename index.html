@@ -445,7 +445,7 @@
   (async function () {
     const pid = window.PODCAST_PLAYLIST_ID;
     if (!pid) return;
-    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=UCYveJNvrEWk6CMoP-FHArXQ');
+    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?playlist_id=' + pid);
     try {
       const data = await (await fetch(api)).json();
       if (data.status !== 'ok' || !data.items || !data.items.length) return;
