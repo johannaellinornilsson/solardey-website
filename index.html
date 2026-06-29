@@ -405,7 +405,6 @@
       <div class="footer-col"><h2>Explore</h2><ul>
         <li><a href="/podcast">Podcast</a></li>
         <li><a href="/solar-stories">Solar Stories</a></li>
-        <li><a href="/blog">Blog</a></li>
         <li><a href="/about">About</a></li>
       </ul></div>
       <div class="footer-col"><h2>Engage</h2><ul>
@@ -445,7 +444,7 @@
   (async function () {
     const pid = window.PODCAST_PLAYLIST_ID;
     if (!pid) return;
-    const api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?playlist_id=' + pid);
+    const api = '/api/episodes?playlist=' + encodeURIComponent(pid);
     try {
       const data = await (await fetch(api)).json();
       if (data.status !== 'ok' || !data.items || !data.items.length) return;
