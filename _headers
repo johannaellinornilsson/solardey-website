@@ -12,3 +12,7 @@
 
 /assets/images/*.svg
   Content-Type: image/svg+xml
+
+/assets/*.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Content-Disposition: inline; filename="prosper-emegoakor.vcf"

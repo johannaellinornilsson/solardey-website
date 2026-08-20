@@ -1,0 +1,18 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Emegoakor;Prosper;Arinze;Nze;
+FN:Nze Prosper Emegoakor
+ORG:Solardey
+TITLE:Founder
+TEL;TYPE=CELL,VOICE:+46704230511
+EMAIL;TYPE=INTERNET,PREF:prosper@solardey.com
+URL:https://solardey.com
+item1.URL:https://se.linkedin.com/in/arinze-prosper-emegoakor
+item1.X-ABLabel:LinkedIn
+item2.URL:https://www.youtube.com/@SolardeyPodcast
+item2.X-ABLabel:YouTube
+item3.URL:https://www.instagram.com/solardey.podcast/
+item3.X-ABLabel:Instagram
+X-SOCIALPROFILE;TYPE=linkedin:https://se.linkedin.com/in/arinze-prosper-emegoakor
+NOTE:Founder of Solardey - Nordic-Africa solar dialogue platform. Host of The Solardey Podcast.
+END:VCARD
