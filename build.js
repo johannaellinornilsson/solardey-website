@@ -97,9 +97,10 @@ function build() {
       ? frontmatter.tags
       : (frontmatter.tags || '').split(',').map(t => t.trim()).filter(Boolean);
     const excerpt = frontmatter.excerpt || '';
+    const cover   = frontmatter.cover || '';
     const mins    = readingTime(html);
 
-    posts.push({ slug, title, date, tags, excerpt, mins });
+    posts.push({ slug, title, date, tags, excerpt, cover, mins });
 
     const postHTML = generatePostPage({ slug, title, date, tags, excerpt, mins, html });
     fs.writeFileSync(path.join(outDir, `${slug}.html`), postHTML);
@@ -113,7 +114,7 @@ function build() {
   updateBlogPage(posts);
   console.log('  ✓ blog.html updated');
 
-  updateHomeBlogPreview(posts.slice(0, 3));
+  updateHomeBlogPreview(posts);
   console.log('  ✓ index.html blog preview updated');
 
   console.log(`\nBuild complete — ${posts.length} post(s) processed`);
@@ -213,22 +214,28 @@ function updateHomeBlogPreview(posts) {
   if (!fs.existsSync('index.html') || posts.length === 0) return;
   let indexHTML = fs.readFileSync('index.html', 'utf8');
 
-  const previewHTML = posts.map(p => {
-    const tags = (Array.isArray(p.tags) ? p.tags : [p.tags])
-      .filter(Boolean).map(t => `<span class="s-blog-tag">#${t}</span>`).join('');
-    return `
-      <article class="s-blog-card">
-        <div class="s-blog-tags">${tags}</div>
-        <h3><a href="/blog/${p.slug}.html">${p.title}</a></h3>
-        <p>${p.excerpt}</p>
-        <div class="s-blog-meta">${p.mins} min read · ${formatDate(p.date)}</div>
-      </article>`;
-  }).join('\n');
+  // Feature the latest post, with its cover image (falls back to the brand OG image).
+  const p = posts[0];
+  const cover = p.cover || '/assets/images/og-image.png';
+  const tags = (Array.isArray(p.tags) ? p.tags : [p.tags])
+    .filter(Boolean).map(t => `<span class="s-blog-tag">#${t}</span>`).join('');
+
+  const featuredHTML = `
+      <a class="s-blog-feature" href="/blog/${p.slug}.html">
+        <div class="s-blog-feature-media"><img src="${cover}" alt="${p.title}" loading="lazy"></div>
+        <div class="s-blog-feature-body">
+          <div class="s-blog-tags">${tags}</div>
+          <h3>${p.title}</h3>
+          <p>${p.excerpt}</p>
+          <div class="s-blog-meta">${p.mins} min read · ${formatDate(p.date)}</div>
+          <span class="arrow-link arrow-link-yellow">Read post</span>
+        </div>
+      </a>`;
 
   if (indexHTML.includes('<!-- BLOG PREVIEW START -->')) {
     indexHTML = indexHTML.replace(
       /<!-- BLOG PREVIEW START -->[\s\S]*?<!-- BLOG PREVIEW END -->/,
-      `<!-- BLOG PREVIEW START -->\n${previewHTML}\n    <!-- BLOG PREVIEW END -->`
+      `<!-- BLOG PREVIEW START -->\n${featuredHTML}\n    <!-- BLOG PREVIEW END -->`
     );
     fs.writeFileSync('index.html', indexHTML);
   }
