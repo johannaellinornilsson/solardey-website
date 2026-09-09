@@ -42,6 +42,10 @@
 }
 .post-body .inner { max-width: 800px; }
 
+/* Cover image, between the hero and the article body */
+.post-cover { margin: 0 0 44px; }
+.post-cover img { width: 100%; height: auto; display: block; }
+
 .post-content {
   font-size: 18px;
   line-height: 1.75;
