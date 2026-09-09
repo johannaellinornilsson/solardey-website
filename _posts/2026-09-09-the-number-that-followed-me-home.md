@@ -3,7 +3,7 @@ title: "The Number That Followed Me Home From Copenhagen"
 date: "2026-09-09"
 tags: [capital, europe, africa]
 excerpt: "Two weeks after TechBBQ's Investor Day, one number won't leave me: Europe puts roughly 150× less into its own technology than America does. And everything Europe said about itself that afternoon, Africa can say about Europe."
-cover: "/assets/images/og-image.png"
+cover: "/assets/images/TechBBQ-2025-39-1024x683.jpg"
 ---
 
 Two weeks after TechBBQ's Investor Day, one number is still sitting with me: 150.

@@ -102,7 +102,7 @@ function build() {
 
     posts.push({ slug, title, date, tags, excerpt, cover, mins });
 
-    const postHTML = generatePostPage({ slug, title, date, tags, excerpt, mins, html });
+    const postHTML = generatePostPage({ slug, title, date, tags, excerpt, cover, mins, html });
     fs.writeFileSync(path.join(outDir, `${slug}.html`), postHTML);
     console.log(`  ✓ blog/${slug}.html`);
   });
@@ -120,7 +120,7 @@ function build() {
   console.log(`\nBuild complete — ${posts.length} post(s) processed`);
 }
 
-function generatePostPage({ slug, title, date, tags, excerpt, mins, html }) {
+function generatePostPage({ slug, title, date, tags, excerpt, cover, mins, html }) {
   const formattedDate = formatDate(date);
   const tagHTML = (Array.isArray(tags) ? tags : [tags])
     .filter(Boolean)
@@ -169,6 +169,7 @@ ${nav}
   </div>
   <div class="post-body">
     <div class="inner">
+      ${cover ? `<div class="post-cover"><img src="${cover}" alt="${title}"></div>` : ''}
       <div class="post-content">${html}</div>
       <a href="/blog" class="arrow-link post-back">← Back to all posts</a>
     </div>
@@ -187,12 +188,16 @@ function updateBlogPage(posts) {
   const postsHTML = posts.map(p => {
     const tags = (Array.isArray(p.tags) ? p.tags : [p.tags])
       .filter(Boolean).map(t => `<span class="blog-post-tag">#${t}</span>`).join('');
+    const cover = p.cover || '/assets/images/og-image.png';
     return `
       <article class="blog-post-card" data-tags="${Array.isArray(p.tags) ? p.tags.join(' ') : ''}">
-        <div class="blog-post-tags">${tags}</div>
-        <h2><a href="/blog/${p.slug}.html">${p.title}</a></h2>
-        <p>${p.excerpt}</p>
-        <div class="blog-post-meta"><span>${p.mins} min read</span><span>${formatDate(p.date)}</span></div>
+        <a class="blog-post-thumb" href="/blog/${p.slug}.html"><img src="${cover}" alt="${p.title}" loading="lazy"></a>
+        <div class="blog-post-body">
+          <div class="blog-post-tags">${tags}</div>
+          <h2><a href="/blog/${p.slug}.html">${p.title}</a></h2>
+          <p>${p.excerpt}</p>
+          <div class="blog-post-meta"><span>${p.mins} min read</span><span>${formatDate(p.date)}</span></div>
+        </div>
       </article>`;
   }).join('\n');
 
