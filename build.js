@@ -123,6 +123,9 @@ function build() {
 
 function generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaption, mins, html }) {
   const formattedDate = formatDate(date);
+  const shareImage = cover
+    ? `https://solardey.com${cover}`
+    : 'https://solardey.com/assets/images/og-image.png';
   const tagHTML = (Array.isArray(tags) ? tags : [tags])
     .filter(Boolean)
     .map(t => `<span class="blog-post-tag">#${t}</span>`)
@@ -148,7 +151,12 @@ function generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaptio
   <meta property="og:description" content="${excerpt}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://solardey.com/blog/${slug}">
-  <meta property="og:image" content="https://solardey.com/assets/images/og-image.png">
+  <meta property="og:image" content="${shareImage}">
+  <meta property="og:image:alt" content="${coverCaption || title}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title} — Solardey">
+  <meta name="twitter:description" content="${excerpt}">
+  <meta name="twitter:image" content="${shareImage}">
   <link rel="canonical" href="https://solardey.com/blog/${slug}">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/pages.css">
