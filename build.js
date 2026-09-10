@@ -50,7 +50,7 @@ function parseMarkdown(md) {
     .map(block => {
       block = block.trim();
       if (!block) return '';
-      if (block.match(/^<(h[1-6]|ul|ol|blockquote|hr)/)) return block;
+      if (block.match(/^<(h[1-6]|ul|ol|blockquote|hr|figure|img|div)/)) return block;
       return `<p>${block.replace(/\n/g, ' ')}</p>`;
     })
     .join('\n');
@@ -98,11 +98,12 @@ function build() {
       : (frontmatter.tags || '').split(',').map(t => t.trim()).filter(Boolean);
     const excerpt = frontmatter.excerpt || '';
     const cover   = frontmatter.cover || '';
+    const coverCaption = frontmatter.coverCaption || '';
     const mins    = readingTime(html);
 
     posts.push({ slug, title, date, tags, excerpt, cover, mins });
 
-    const postHTML = generatePostPage({ slug, title, date, tags, excerpt, cover, mins, html });
+    const postHTML = generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaption, mins, html });
     fs.writeFileSync(path.join(outDir, `${slug}.html`), postHTML);
     console.log(`  ✓ blog/${slug}.html`);
   });
@@ -120,7 +121,7 @@ function build() {
   console.log(`\nBuild complete — ${posts.length} post(s) processed`);
 }
 
-function generatePostPage({ slug, title, date, tags, excerpt, cover, mins, html }) {
+function generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaption, mins, html }) {
   const formattedDate = formatDate(date);
   const tagHTML = (Array.isArray(tags) ? tags : [tags])
     .filter(Boolean)
@@ -169,7 +170,7 @@ ${nav}
   </div>
   <div class="post-body">
     <div class="inner">
-      ${cover ? `<div class="post-cover"><img src="${cover}" alt="${title}"></div>` : ''}
+      ${cover ? `<figure class="post-cover"><img src="${cover}" alt="${coverCaption || title}">${coverCaption ? `<figcaption>${coverCaption}</figcaption>` : ''}</figure>` : ''}
       <div class="post-content">${html}</div>
       <a href="/blog" class="arrow-link post-back">← Back to all posts</a>
     </div>

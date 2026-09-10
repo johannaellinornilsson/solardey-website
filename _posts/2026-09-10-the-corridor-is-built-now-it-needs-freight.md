@@ -3,7 +3,8 @@ title: "The Corridor Is Built. Now It Needs Freight."
 date: "2026-09-10"
 tags: [capital, africa, diaspora]
 excerpt: "Two weeks after the Nordic-African Summit at TechBBQ 2026, the talking points have settled. What remains is a question of traffic — and the freight the corridor is missing sits in the middle, between a promising project and a bankable one."
-cover: "/assets/images/TechBBQ-2025-39-1024x683.jpg"
+cover: "/assets/images/afrosummit.jpg"
+coverCaption: "Nordic-Africa Investor Partnerships in Practice — moderator Johnni Kjelsgaard (GrowthAfrica) with Lisbeth Stausholm Zacho (Nordic Impact Funds) and Catherine Cax (Nordic Compass / Climate Investment Partners) at the Nordic-African Summit, TechBBQ 2026."
 ---
 
 Copenhagen, two weeks on. The badges have been recycled, the LinkedIn connection requests accepted, and the WhatsApp groups formed in the mingling hours after the final panel have already gone through their first cycle of enthusiasm and silence. This is the moment when a summit reveals whether it was an event or an inflection point.
@@ -23,6 +24,8 @@ The third figure was quieter but arguably the most actionable: African loan defa
 ## From aid to trade — the phrase everyone agreed on, and what nobody resolved
 
 "We don't want aid, we want trade" has been Tanzanian policy for over a decade, and it was the closest thing the summit had to a chorus. Denmark, to its credit, is responding with more than rhetoric: a suite of five new business instruments — grants, loans, equity, and technical assistance — designed to plug the financing gap that strands Danish SMEs between a few million kroner and the large-ticket sizes DFIs traditionally serve.
+
+<figure class="post-figure portrait"><img src="/assets/images/afrosummit2.jpg" alt="Panel on diplomacy as a catalyst for collaboration in innovation at the Nordic-African Summit, TechBBQ 2026"><figcaption>Diplomacy as a Catalyst for Collaboration in Innovation — moderator Charles Kinga (Head of the Nordic-Africa Initiative, TechBBQ) with Simon C. Mears (Honorary Consul and Head of Mission, Tanzania Consulate in Denmark) and Geraldine Umutesi (First Counsellor, Rwandan Embassy in the Nordic Countries).</figcaption></figure>
 
 But the sharpest intervention of the entire summit came from the floor, not the stage. Technology transfer, an audience member observed, still runs one way. A Danish company entering Ghana or Botswana as a Danish company, operating as a Danish company, is not partnership — it is presence. True partnership means joint ventures, co-created intellectual property, and localization deep enough that value accrues on both ends of the corridor. The panel agreed. Agreement, of course, is the easy part.
 

@@ -45,6 +45,7 @@
 /* Cover image, between the hero and the article body */
 .post-cover { margin: 0 0 44px; }
 .post-cover img { width: 100%; height: auto; display: block; }
+.post-cover figcaption { margin-top: 12px; }
 
 .post-content {
   font-size: 18px;
@@ -138,4 +139,25 @@
   height: auto;
   display: block;
   margin: 32px 0;
+}
+
+.post-figure {
+  margin: 44px 0;
+}
+.post-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Portrait shots would otherwise tower over the column */
+.post-figure.portrait img { max-width: 520px; }
+.post-figure.portrait figcaption { max-width: 520px; }
+.post-figure figcaption,
+figcaption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray-700);
+  margin-top: 12px;
+  border-left: 3px solid var(--green-500);
+  padding-left: 12px;
 }
