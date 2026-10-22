@@ -4,6 +4,7 @@ Allow: /
 Disallow: /intake
 Disallow: /coming-soon
 Disallow: /admin
+Disallow: /solar-stories
 
 # AI crawlers explicitly welcome
 User-agent: ClaudeBot
