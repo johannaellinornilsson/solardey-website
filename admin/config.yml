@@ -35,4 +35,3 @@ collections:
           - { label: "LinkedIn URL",    name: "linkedin",  widget: "string", required: false }
           - { label: "YouTube URL",     name: "youtube",   widget: "string", required: false }
           - { label: "Spotify URL",     name: "spotify",   widget: "string", required: false }
-          - { label: "Apple Podcasts URL", name: "apple",  widget: "string", required: false }

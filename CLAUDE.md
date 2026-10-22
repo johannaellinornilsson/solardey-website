@@ -137,9 +137,9 @@ All public pages have: canonical, OG tags (with width/height/type/alt), Twitter 
 
 **OG image:** `/assets/images/og-image.png` (1201×630, ~285KB, PNG). Has width/height/type/alt set in meta tags.
 
-**Sitemap:** lists 5 URLs (/, /about, /podcast, /solar-stories, /network). Blog excluded until ready.
+**Sitemap:** lists 7 URLs (/, /about, /podcast, /network, /connect, /blog, + blog posts). Solar Stories excluded while the page is hidden.
 
-**robots.txt:** disallows /intake, /coming-soon, /admin. Sitemap referenced.
+**robots.txt:** disallows /intake, /coming-soon, /admin, /solar-stories (hidden). Sitemap referenced.
 
 ---
 
@@ -165,8 +165,7 @@ If a hero text becomes hard to read on a bright image, **don't add a full overla
 ---
 
 ## Known open items (not blocking launch)
-- [ ] Apple Podcasts link is `#` on several pages — fill in when URL is available
-- [ ] Blog hidden from nav (`<a href="/blog.html">Blog</a>` removed from nav-links) — re-enable when blog has content
+- [ ] Solar Stories temporarily hidden — see "Un-hiding Solar Stories" below
 - [ ] `hero-source.mp4` (158MB master) should be moved out of project folder
 - [ ] When podcast has 5+ episodes, consider switching from hardcoded descriptions to a Cloudflare Worker YouTube Data API proxy
 
@@ -178,6 +177,11 @@ If a hero text becomes hard to read on a bright image, **don't add a full overla
 1. Find video ID in YouTube URL (`?v=XXXX`)
 2. In `podcast.html`, add to `EPISODE_DESCRIPTIONS` object: `'videoID': 'short summary text'`
 3. That's it — RSS feed pulls the rest (title, date, thumbnail)
+
+### Un-hiding Solar Stories
+1. Restore the nav link (`<a href="/solar-stories">Solar Stories</a>`) and the footer "Explore" list item on all pages, plus the explore card on connect.html (set `.cn-explore-grid` back to `repeat(4, 1fr)`)
+2. On index.html: remove `style="display:none" aria-hidden="true"` from `section.s-stories`, and point the hero ghost-link back to `/solar-stories` ("Watch Solar Stories")
+3. Remove the `noindex` meta from solar-stories.html, drop `Disallow: /solar-stories` from robots.txt, re-add the URL to sitemap.xml
 
 ### Launching Solar Stories episodes
 1. Remove `display:none` from the hidden episode-cards section on solar-stories.html
