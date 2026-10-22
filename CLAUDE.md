@@ -181,7 +181,7 @@ If a hero text becomes hard to read on a bright image, **don't add a full overla
 ### Un-hiding Solar Stories
 1. Restore the nav link (`<a href="/solar-stories">Solar Stories</a>`) and the footer "Explore" list item on all pages, plus the explore card on connect.html (set `.cn-explore-grid` back to `repeat(4, 1fr)`)
 2. On index.html: remove `style="display:none" aria-hidden="true"` from `section.s-stories`, and point the hero ghost-link back to `/solar-stories` ("Watch Solar Stories")
-3. Remove the `noindex` meta from solar-stories.html, drop `Disallow: /solar-stories` from robots.txt, re-add the URL to sitemap.xml
+3. Remove the `noindex` meta from solar-stories.html, drop `Disallow: /solar-stories` from robots.txt, re-add the URL to sitemap.xml, and delete the `/solar-stories` rules from `_redirects`
 
 ### Launching Solar Stories episodes
 1. Remove `display:none` from the hidden episode-cards section on solar-stories.html
