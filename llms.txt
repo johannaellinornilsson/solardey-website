@@ -1,0 +1,30 @@
+# Solardey
+
+> Solardey is a Nordic–Africa solar dialogue platform founded by Nze Prosper Emegoakor in Malmö, Sweden. It connects Nordic clean-tech thinking with African solar opportunity through the Solardey Podcast, a blog, the Solardey Network membership, and advisory services.
+
+Solardey's founder is based in Malmö, Sweden, with roots in Nigeria. Field verification and on-site support start in Nigeria and expand to other African nations in stages. The name comes from "dey", which means "available" in Nigerian Pidgin: solar that is always there. Contact: prosper@solardey.com.
+
+## Main pages
+
+- [Home](https://solardey.com/): Overview of the platform, the podcast, the focus areas and how to work with Solardey
+- [About](https://solardey.com/about): Founder bio, mission, track record and a FAQ about Solardey
+- [Podcast](https://solardey.com/podcast): The Solardey Podcast, conversations on solar energy across the Nordic–Africa corridor, on YouTube and Spotify
+- [Network](https://solardey.com/network): The Solardey Network, a curated membership (by application) for professionals, investors and stakeholders in renewable energy
+- [Connect](https://solardey.com/connect): Contact details for Prosper Emegoakor and links to every Solardey channel
+
+## Blog
+
+- [Blog index](https://solardey.com/blog): Notes and reflections on solar energy, markets, policy and the Nordic–Africa corridor
+- [The Corridor Is Built. Now It Needs Freight.](https://solardey.com/blog/the-corridor-is-built-now-it-needs-freight): Reflections after the Nordic-African Summit at TechBBQ 2026 on what sits between a promising project and a bankable one
+- [The Number That Followed Me Home From Copenhagen](https://solardey.com/blog/the-number-that-followed-me-home): Europe's technology investment gap, seen from TechBBQ's Investor Day, and what it means for Africa
+
+## Channels
+
+- [YouTube: Solardey Podcast](https://www.youtube.com/@SolardeyPodcast)
+- [Spotify: Solardey Podcast](https://open.spotify.com/show/76hVYPuRJlF3wS2tYg7qUW)
+- [Instagram](https://www.instagram.com/solardey.podcast/)
+- [LinkedIn: Prosper Emegoakor](https://se.linkedin.com/in/arinze-prosper-emegoakor)
+
+## Optional
+
+- [Sitemap](https://solardey.com/sitemap.xml)

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
+  <link rel="preload" as="image" href="/assets/images/hero-poster.webp" fetchpriority="high">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/home.css">
   <!-- YouTube API key injected by Cloudflare Pages env variable -->  <!-- Podcast playlist ID — set this to your actual playlist -->
@@ -87,7 +88,7 @@
 }
 </script>
   <!-- ═══ / SEO ═══ -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <script>/* Netlify Identity only when an invite/recovery link lands here (Decap CMS) */if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';document.head.appendChild(s);}</script>
   <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">
   <script>
     window.PODCAST_PLAYLIST_ID = "PLt2q5BNHsCB4CUvbBRu5D5ythhycwFcvO";
@@ -112,6 +113,9 @@
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button>
   </div>
 </header>
+
+<main id="main">
+
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="s-hero">
@@ -357,6 +361,7 @@
       <img src="/assets/images/solardey-network.webp"
            alt="Solardey Network — professionals shaping renewable energy across the Nordic–Africa corridor"
            loading="lazy"
+           width="1024" height="1024"
            class="s-network-img">
     </div>
   </div>
@@ -401,6 +406,8 @@
     <p class="s-subscribe-note">No spam. Unsubscribe anytime.</p>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer" role="contentinfo">
   <div class="inner">

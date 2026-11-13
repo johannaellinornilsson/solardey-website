@@ -4,7 +4,7 @@
     {
       "name": "solardey-static",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "C:\\Users\\johannaelinorni\\OneDrive - RISE\\Skrivbordet\\solardey-website", "-l", "4173"],
+      "runtimeArgs": ["--yes", "serve", ".", "-l", "4173"],
       "port": 4173
     }
   ]

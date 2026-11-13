@@ -161,10 +161,11 @@ function generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaptio
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/pages.css">
   <link rel="stylesheet" href="/css/post.css">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>/* Netlify Identity only when an invite/recovery link lands here (Decap CMS) */if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';document.head.appendChild(s);}</script>
 </head>
 <body>
 ${nav}
+<main id="main">
 <article class="post-article">
   <div class="post-hero bg-dark-green">
     <div class="inner">
@@ -184,6 +185,7 @@ ${nav}
     </div>
   </div>
 </article>
+</main>
 ${footer}
 <script src="/js/main.js"></script>
 </body>

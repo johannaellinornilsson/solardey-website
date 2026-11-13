@@ -68,7 +68,7 @@
 }
 </script>
   <!-- ═══ / SEO ═══ -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <script>/* Netlify Identity only when an invite/recovery link lands here (Decap CMS) */if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';document.head.appendChild(s);}</script>
   <link rel="icon" type="image/svg+xml" href="/assets/svg/favicon.svg">
 </head>
 <body>
@@ -87,6 +87,9 @@
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button>
   </div>
 </header>
+
+<main id="main">
+
 
 <!-- HERO -->
 <section class="page-hero page-hero-photo">
@@ -304,6 +307,8 @@
     </form>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer" role="contentinfo">
   <div class="inner">
