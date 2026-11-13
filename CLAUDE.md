@@ -143,6 +143,16 @@ All public pages have: canonical, OG tags (with width/height/type/alt), Twitter 
 
 ---
 
+## Swedish page (`/sv/`)
+
+`sv/index.html` is a Swedish version of the homepage, there so the site can rank for Swedish searches. It was created from `index.html` once and is now **maintained by hand**: when you change copy or sections on the homepage, update `sv/index.html` too. It omits the Solar Stories and blog sections, and its podcast date uses `sv-SE`.
+
+- **hreflang:** `index.html` and `sv/index.html` both list `en` → `/`, `sv` → `/sv/`, `x-default` → `/`. `sitemap.xml` repeats this with `xhtml:link`. Only these two pages are a translated pair, so no other page gets hreflang.
+- **Language switcher:** `.nav-lang` link at the end of `.nav-links` ("Svenska" on English pages, "English" on `/sv/`). Styled in `main.css`. Blog posts inherit it through the nav that `build.js` copies from `index.html`.
+- Inner links on `/sv/` point to the English pages (podcast, about, network) — they are not translated.
+
+---
+
 ## Social handles (use these exact ones)
 - Instagram: `https://www.instagram.com/solardey.podcast/`
 - LinkedIn (Prosper): `https://se.linkedin.com/in/arinze-prosper-emegoakor`

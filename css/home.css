@@ -478,6 +478,13 @@
   line-height: 1.15;
 }
 .s-focus h3 em { font-style: italic; }
+.s-focus-lead {
+  max-width: 640px;
+  margin: -8px auto 32px;
+  color: var(--green-800);
+  font-size: 16px;
+  line-height: 1.6;
+}
 .s-focus-tags {
   display: flex; flex-wrap: wrap; gap: 10px;
   justify-content: center;
