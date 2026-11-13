@@ -87,7 +87,7 @@
 }
 </script>
   <!-- ═══ / SEO ═══ -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <script>/* Netlify Identity only when an invite/recovery link lands here (Decap CMS) */if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';document.head.appendChild(s);}</script>
 <style>
 @media (max-width: 768px) {
   .about-series-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
@@ -119,6 +119,9 @@
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button>
   </div>
 </header>
+
+<main id="main">
+
 
 <!-- HERO -->
 <section class="page-hero page-hero-photo">
@@ -271,6 +274,8 @@
     <a href="mailto:prosper@solardey.com?subject=Solar%20Stories%20Enquiry" class="btn btn-primary"><span>Tell us your story</span></a>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer" role="contentinfo">
   <div class="inner">
