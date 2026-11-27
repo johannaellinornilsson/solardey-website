@@ -713,26 +713,23 @@
   object-fit: cover;
   z-index: 0;
 }
-.s-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 85% 15%, rgba(255,190,90,.45) 0%, rgba(255,160,60,0) 50%),
-    linear-gradient(
-      100deg,
-      rgba(60,30,5,.60) 0%,
-      rgba(120,65,15,.40) 40%,
-      rgba(200,130,40,.22) 75%,
-      rgba(255,170,70,.12) 100%
-    );
-  z-index: 1;
-}
 .s-hero .inner,
 .s-hero-deco {
   position: relative;
   z-index: 2;
 }
 .s-hero .s-hero-visual { display: none; }
+/* Local scrim behind the text block only (no full overlay): the video opens on
+   a bright sky, and white clouds wash out the yellow eyebrow and h1 accent. */
+.s-hero-content { position: relative; }
+.s-hero-content::before {
+  content: "";
+  position: absolute;
+  inset: -70px -110px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(22,56,27,.66) 0%, rgba(22,56,27,.5) 45%, rgba(22,56,27,0) 100%);
+}
 .s-hero .inner {
   grid-template-columns: 1fr;
   max-width: 860px;
@@ -742,10 +739,11 @@
 @media (max-width: 768px) {
   .s-hero { min-height: 420px; padding: 60px 0; }
   .s-hero h1 { font-size: 38px; }
-  /* Split-screen clips crop to their centre seam on a portrait screen — bias
-     to one side so a whole person stays in frame, and lay a soft scrim under
-     the text for legibility. Desktop (landscape) is untouched. */
-  .s-hero-video { object-position: 30% center; }
+  /* The text block fills most of a phone hero, and the bottom gradient below
+     already darkens it, so keep the text scrim light here. */
+  .s-hero-content::before { inset: -30px -22px; opacity: .45; }
+  /* Phones get their own 4:5 cut (see <source media> in index.html), framed
+     for the centre. Soft scrim under the text for legibility. */
   .s-hero::after {
     content: "";
     position: absolute;

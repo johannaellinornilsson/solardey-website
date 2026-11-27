@@ -125,8 +125,12 @@
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="s-hero">
-  <!-- Background video -->
+  <!-- Background video: 4:5 cut for phones, 16:9 for wider screens. `media` is
+       read once at load, so a resized desktop window keeps the version it got. -->
   <video class="s-hero-video" autoplay muted loop playsinline preload="none" poster="/assets/images/hero-poster.webp">
+    <source src="/assets/images/hero-mobile.webm" type="video/webm" media="(max-width: 768px)">
+    <source src="/assets/images/hero-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+    <source src="/assets/images/hero.webm" type="video/webm">
     <source src="/assets/images/hero.mp4" type="video/mp4">
   </video>
   <div class="inner">
