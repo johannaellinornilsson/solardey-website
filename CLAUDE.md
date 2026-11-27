@@ -162,6 +162,7 @@ Prosper publishes weekly "field reports" as YouTube Shorts and Instagram Reels; 
 - **Automatic:** `js/main.js` fills every `[data-field-reports]` grid from `/api/episodes?playlist=UUSHYveJNvrEWk6CMoP-FHArXQ` — the channel's auto-generated Shorts playlist ("UUSH" + channel ID without "UC"). So **every** Short on the channel appears, not only field reports; titles are shown without hashtags.
 - **Instagram** is a link to `/reels/` only. Auto-fetching Reels needs Meta's Graph API (Business/Creator account + a token renewed every 60 days) — not set up.
 - If the feed fails, the grid is removed and only the YouTube/Instagram buttons remain.
+- `functions/api/episodes.js` reads the **YouTube Data API** when the Cloudflare Pages variable `YOUTUBE_API_KEY` is set (production + preview). Without it, it falls back to the videos.xml RSS feed, which YouTube answers with 403 from Cloudflare since Nov 2026, so the key is effectively required. The last good result is kept in the edge cache for a week; on total failure the API returns 503 with `upstream` statuses for debugging.
 - Testing locally needs the Pages Functions: `npx wrangler pages dev .` (plain `npx serve` returns 404 for `/api/*`).
 
 ---
