@@ -42,6 +42,8 @@ solardey-website/
 
 ## CSS architecture
 
+**Cache-busting (important):** every `/css/*.css` and `/js/main.js` reference carries `?v=YYYYMMDD` (all HTML files + the post template in `build.js`). Cloudflare and browsers cache CSS/JS for up to a day plus a week of stale-while-revalidate, so **whenever you change any CSS or JS file, bump the `?v=` value everywhere** (e.g. `grep -rl "?v=20261127" --include=*.html . build.js | xargs sed -i "s/?v=20261127/?v=NEWDATE/g"`). Otherwise new HTML ships with old CSS/JS.
+
 **Important:** about.html does NOT load pages.css — it has its own copies of `.page-hero` and `.page-hero-photo` styles in about.css. When changing photo-hero text styling, update BOTH `pages.css` AND `about.css`.
 
 **Class prefixes:**
