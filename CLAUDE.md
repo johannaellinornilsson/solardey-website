@@ -36,7 +36,7 @@ solardey-website/
 - Hero images: `hero-{page}.webp` (hero-podcast.jpg, hero-solar.jpg, hero-about.webp, hero-network.webp) — heavy PNGs converted to WebP for performance
 - Episode previews: `{city}.webp` (malmo.webp, arlov.webp, hagestad.webp) — note `arlov.webp` is used for the **Åkarp** episode
 - Source video master: `hero-source.mp4` (158MB, should be moved OUT of project to avoid deploy)
-- Optimized hero: `hero.mp4` (1.7MB, max 1280px, no audio) + `hero-poster.webp` poster frame
+- Homepage hero video (Solkullen/RISE trip, Aug 2026, ~19 s seamless loop, no audio, no burned-in text): `hero.mp4` / `hero.webm` (1920×1080) and `hero-mobile.mp4` / `hero-mobile.webm` (1080×1350, served via `<source media="(max-width: 768px)">`), plus `hero-poster.webp` (first frame, a clear sky, used for both). Raw clips live outside the repo.
 
 ---
 
