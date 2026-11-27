@@ -158,9 +158,9 @@ function generatePostPage({ slug, title, date, tags, excerpt, cover, coverCaptio
   <meta name="twitter:description" content="${excerpt}">
   <meta name="twitter:image" content="${shareImage}">
   <link rel="canonical" href="https://solardey.com/blog/${slug}">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/pages.css">
-  <link rel="stylesheet" href="/css/post.css">
+  <link rel="stylesheet" href="/css/main.css?v=20261127">
+  <link rel="stylesheet" href="/css/pages.css?v=20261127">
+  <link rel="stylesheet" href="/css/post.css?v=20261127">
   <script>/* Netlify Identity only when an invite/recovery link lands here (Decap CMS) */if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){var s=document.createElement('script');s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';document.head.appendChild(s);}</script>
 </head>
 <body>
@@ -187,7 +187,7 @@ ${nav}
 </article>
 </main>
 ${footer}
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=20261127"></script>
 </body>
 </html>`;
 }

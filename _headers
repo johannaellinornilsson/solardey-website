@@ -22,7 +22,8 @@
 /assets/*
   Cache-Control: public, max-age=2592000
 
-# CSS/JS have no hashed filenames: cache 1 day, revalidate in the background.
+# CSS/JS are referenced as /css/x.css?v=YYYYMMDD — bump ?v= on every change
+# (see CLAUDE.md). Cache 1 day, revalidate in the background.
 /css/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
