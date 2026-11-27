@@ -153,6 +153,17 @@ All public pages have: canonical, OG tags (with width/height/type/alt), Twitter 
 
 ---
 
+## Field reports (weekly YouTube Shorts / Instagram Reels)
+
+Prosper publishes weekly "field reports" as YouTube Shorts and Instagram Reels; the podcast itself is monthly. A `.s-field` section shows the 4 latest Shorts on `index.html`, `sv/index.html` (both dark green, after the podcast section) and `podcast.html` (light `.s-field--light` variant, before "Be a guest").
+
+- **Automatic:** `js/main.js` fills every `[data-field-reports]` grid from `/api/episodes?playlist=UUSHYveJNvrEWk6CMoP-FHArXQ` — the channel's auto-generated Shorts playlist ("UUSH" + channel ID without "UC"). So **every** Short on the channel appears, not only field reports; titles are shown without hashtags.
+- **Instagram** is a link to `/reels/` only. Auto-fetching Reels needs Meta's Graph API (Business/Creator account + a token renewed every 60 days) — not set up.
+- If the feed fails, the grid is removed and only the YouTube/Instagram buttons remain.
+- Testing locally needs the Pages Functions: `npx wrangler pages dev .` (plain `npx serve` returns 404 for `/api/*`).
+
+---
+
 ## Social handles (use these exact ones)
 - Instagram: `https://www.instagram.com/solardey.podcast/`
 - LinkedIn (Prosper): `https://se.linkedin.com/in/arinze-prosper-emegoakor`
