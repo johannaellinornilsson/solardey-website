@@ -14,31 +14,74 @@
 
 const DEFAULT_PLAYLIST = 'PLt2q5BNHsCB4CUvbBRu5D5ythhycwFcvO';
 
+// The last good result per playlist is kept in the edge cache for a week, so
+// when YouTube's feed is briefly unavailable from Cloudflare (it returns
+// errors to datacenter IPs now and then) visitors still get episodes.
+const STALE_TTL = 7 * 24 * 3600;
+
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const playlist = url.searchParams.get('playlist') || DEFAULT_PLAYLIST;
 
   // Restrict to YouTube-style IDs so this can't be used as an open proxy.
   if (!/^[A-Za-z0-9_-]{10,64}$/.test(playlist)) {
-    return json({ status: 'error', items: [] }, 400);
+    return json({ status: 'error', items: [] }, 400, 'no-store');
   }
 
-  const feedUrl =
-    'https://www.youtube.com/feeds/videos.xml?playlist_id=' + playlist;
+  const cache = caches.default;
+  const staleKey = new Request('https://solardey-cache.internal/episodes/' + playlist);
 
-  let xml;
-  try {
-    const res = await fetch(feedUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SolardeyBot/1.0)' },
-      // Edge-cache the upstream feed for 15 minutes to stay well within limits.
-      cf: { cacheTtl: 900, cacheEverything: true },
-    });
-    if (!res.ok) return json({ status: 'error', items: [] }, 502);
-    xml = await res.text();
-  } catch (e) {
-    return json({ status: 'error', items: [] }, 502);
+  const tried = [];
+  const items = await fetchFeed(playlist, tried);
+
+  if (items) {
+    const fresh = json({ status: 'ok', items });
+    const copy = json({ status: 'ok', items, stale: true }, 200,
+      'public, max-age=' + STALE_TTL);
+    context.waitUntil(cache.put(staleKey, copy));
+    return fresh;
   }
 
+  // Upstream failed: serve the last good copy if there is one.
+  const stale = await cache.match(staleKey);
+  if (stale) {
+    const data = await stale.json();
+    return json(data, 200, 'public, max-age=300');
+  }
+
+  // 503, not 502: Cloudflare replaces a Function's 502 body with its own
+  // "error code: 502" page. no-store so browsers don't keep the failure.
+  return json({ status: 'error', items: [], upstream: tried }, 503, 'no-store');
+}
+
+// YouTube's videos.xml feed. The browser-like User-Agent matters: YouTube
+// answers some bot-looking requests from datacenter IPs with 404/5xx.
+async function fetchFeed(playlist, tried) {
+  const feedUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=' + playlist;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(feedUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36',
+          'Accept': 'application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+        },
+        // Cache good feeds for 15 minutes; never cache upstream errors.
+        cf: { cacheTtlByStatus: { '200-299': 900, '300-599': 0 } },
+      });
+      tried.push(res.status);
+      if (!res.ok) continue;
+      const items = parseFeed(await res.text());
+      if (items.length) return items;
+      tried.push('empty');
+    } catch (e) {
+      tried.push('fetch-error');
+    }
+  }
+  return null;
+}
+
+function parseFeed(xml) {
   const items = [];
   const entryRe = /<entry>([\s\S]*?)<\/entry>/g;
   let m;
@@ -54,8 +97,7 @@ export async function onRequest(context) {
       pubDate: pub,
     });
   }
-
-  return json({ status: 'ok', items });
+  return items;
 }
 
 // Decode the handful of XML entities YouTube uses in titles.
@@ -70,13 +112,13 @@ function decodeXml(s) {
     .replace(/&amp;/g, '&');
 }
 
-function json(obj, status = 200) {
+function json(obj, status = 200, cacheControl = 'public, max-age=900, s-maxage=900') {
   return new Response(JSON.stringify(obj), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'public, max-age=900, s-maxage=900',
+      'Cache-Control': cacheControl,
     },
   });
 }
