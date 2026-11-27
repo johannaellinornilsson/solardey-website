@@ -108,3 +108,87 @@ async function loadLatestEpisode(containerId, playlistId) {
     console.log('Latest episode unavailable');
   }
 }
+
+// ── FIELD REPORTS (YouTube Shorts) ──
+// Weekly field reports are published as YouTube Shorts (and Instagram Reels).
+// Every Shorts upload on the channel shows up here automatically: the channel's
+// auto-generated Shorts playlist ("UUSH" + channel ID without "UC") is read
+// through the same /api/episodes Pages Function the podcast card uses.
+// Markup: <div class="s-field-grid" data-field-reports data-count="4">…</div>
+// The grid starts with placeholder cards; if the feed can't be read, the grid is
+// removed and only the YouTube / Instagram links remain.
+(function () {
+  const SHORTS_PLAYLIST = 'UUSHYveJNvrEWk6CMoP-FHArXQ';
+  const grids = document.querySelectorAll('[data-field-reports]');
+  if (!grids.length) return;
+
+  const lang   = document.documentElement.lang === 'sv' ? 'sv-SE' : 'en-GB';
+  const label  = lang === 'sv-SE' ? 'Se på YouTube' : 'Watch on YouTube';
+
+  // Titles carry hashtags for reach (#solardey #nigeria …); drop them for display.
+  const cleanTitle = t => t.replace(/#[\p{L}\p{N}_]+/gu, '')
+                           .replace(/\s{2,}/g, ' ')
+                           .replace(/[\s\-–—|:]+$/, '')
+                           .trim();
+
+  let feed; // one request shared by every grid on the page
+  const getFeed = () => feed || (feed = fetch('/api/episodes?playlist=' + SHORTS_PLAYLIST)
+    .then(r => r.json())
+    .then(d => (d.status === 'ok' && d.items) ? d.items : []));
+
+  function render(grid) {
+    const count = parseInt(grid.dataset.count, 10) || 4;
+    getFeed().then(items => {
+      if (!items.length) { grid.remove(); return; }
+      grid.textContent = '';
+      items.slice(0, count).forEach(item => {
+        const vid = new URL(item.link).searchParams.get('v');
+        if (!vid) return;
+        const title = cleanTitle(item.title) || item.title;
+
+        const a = document.createElement('a');
+        a.className = 's-field-card';
+        a.href = 'https://www.youtube.com/shorts/' + vid;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.setAttribute('aria-label', title + ' — ' + label);
+
+        const thumb = document.createElement('div');
+        thumb.className = 's-field-thumb';
+        const img = document.createElement('img');
+        img.src = 'https://i.ytimg.com/vi/' + vid + '/oardefault.jpg'; // 9:16 Shorts frame
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.width = 720; img.height = 1280;
+        img.onerror = () => { img.onerror = null; img.src = 'https://i.ytimg.com/vi/' + vid + '/hqdefault.jpg'; };
+        thumb.appendChild(img);
+        const play = document.createElement('span');
+        play.className = 's-field-play';
+        play.setAttribute('aria-hidden', 'true');
+        thumb.appendChild(play);
+
+        const date = document.createElement('span');
+        date.className = 's-field-date';
+        date.textContent = new Date(item.pubDate).toLocaleDateString(lang, { day: 'numeric', month: 'short', year: 'numeric' });
+
+        const h = document.createElement('h3');
+        h.className = 's-field-title';
+        h.textContent = title;
+
+        a.append(thumb, date, h);
+        grid.appendChild(a);
+      });
+    }).catch(() => grid.remove());
+  }
+
+  // Thumbnails are heavy (~150 KB each), so wait until the section is near view.
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => { if (e.isIntersecting) { obs.unobserve(e.target); render(e.target); } });
+    }, { rootMargin: '400px 0px' });
+    grids.forEach(g => io.observe(g));
+  } else {
+    grids.forEach(render);
+  }
+})();
